@@ -25,6 +25,7 @@ This style guide is inspired by and loosely build on the
   1. [Classes & Contructors](#classes--constructors)
   1. [Naming Conventions](#naming-conventions)
   1. [Asset Naming Conventions](#asset-naming-conventions)
+  1. [Logging](#logging)
   1. [Live templates](#live-templates)
   1. [Roadmap](#roadmap)
   1. [Resources](#resources)
@@ -498,6 +499,32 @@ This style guide is inspired by and loosely build on the
     class HTTPRequest {
     }
   
+  <a name="naming--listener-interafaces"></a><a name="10.6"></a>
+  - [10.6](#naming--listener-interafaces) Interfaces for listeners 
+  should be written in present tense, should start with `On` and end 
+  with `Listener`. Every method within this interface should be written 
+  in past tense and should start with `on`.
+   
+    // bad
+    public interface ClickListener { ... }
+    public interface OnScrolledListener { ... }
+    
+    // good 
+    public interface OnClickListener { ... }
+    public interface OnScollListener { ... }
+    
+    // bad 
+    public interface OnClickListener {
+        void onClick(...) { ... }
+    }
+    
+    // good 
+    public interface OnClickListener {
+        void onClicked(...) { ... }
+    }
+  
+**[back to top](#table-of-contents)**
+  
 ## Asset naming conventions {.unnumbered}  
   
   <a name="naming--layouts"></a><a name="11.1"></a>
@@ -611,6 +638,61 @@ This style guide is inspired by and loosely build on the
   
 **[back to top](#table-of-contents)**
 
+## Logging {.unnumbered}
+
+  <a name="logging--loglevels"></a><a name="12.1"></a>
+  - [12.1](#logging--loglevels) Android provides a various amount of log
+  levels each with its own purpose. Along with android studio you have 
+  the tool for filtering the logcat by exactly this levels. Here is a 
+  list of common log levels and their meaning
+  
+  | Level | Meaning |
+  |:-|:-------------|
+  | DEBUG | To log about anything happen in the app. Is mostly used during debugging. Should be revisited before entering into production mode. |
+  | ERROR | Log every error conditions (e.g. result of an API call resulted in an error). Usually the programm can resume from there and result in an error state. |
+  | INFO | All user driven actions of system specific. |
+  | VERBOSE | Multipurpose log level. A log statement at this level will always be shown in the logcat. |
+  | WARN | Log all events, which could potentially become an error. |
+
+  <a name="logging--messages"></a><a name="12.2"></a>
+  - [12.2](#logging--messages) Write meaningful log messages. This 
+  sounds easy but is in fact really hard. Keep in mind, that you 
+  sometimes log for the event of an error, which in reality occurs only
+  rarely. But if it does, you depend on a clear log message along with
+  an expressive payload. A good log message should consist of the 
+  following items:
+  
+  * The filename and linenumber of the log statement (optionally the methodname to make it easier to categorize the log purely from reading)
+  * A meaningful log message
+  * An expressive payload, usually a Java object (That's way you should always add a toString Method - see [here](#classes-constructors--tostring)
+  
+  <a name="logging--message-language"></a><a name="12.3"></a>
+  - [12.3](#logging--message-language) Write your log messages in 
+  english. English is a well known language both in terms of writing and
+  reading. Furthermore does it not contain any special characters, which
+  means the it can be logged with ASCII. This is especially important
+  when performing log rotation, since you do not know where your logs 
+  are stored.
+
+  <a name="logging--payload"></a><a name="12.4"></a>
+  - [12.4](#logging--payload) Always log with payload (i.e. context). 
+  The log message often is not sufficient when tracing bugs. You almost
+  always need additional information. So just log them along with the 
+  message and you keep yourself from deploying a new version of the app
+  just to improve log messages. 
+  
+  Make sure that the payload is well formatted and complete. The format 
+  helps you to filter and/or search for certain events.
+  
+    // bad
+    Transaction failed!
+    
+    // bad. Payload included but hard to read/parse
+    Transaction '63287' failed: Checksum 'null' is invalid!
+    
+    // good
+    Transaction failed: { id: 63287, checksum: null }
+
 ## Live templates {.unnumbered}
 
 ## Roadmap {.unnumbered}
@@ -624,8 +706,8 @@ in future releases without a fixed date.
 
 * Naming conventions for <strike>strings, dimens, integers</strike>, styles, themes
 * Conventions for View Injection using Butterknife
-* Conventions for Logging using Timber
-* Naming conventions for Listener-Interfaces and corresponding methods
+* <strike>Conventions for Logging</strike> 
+* <strike>Naming conventions for Listener-Interfaces and corresponding methods</striker>
 * Naming and Grouping conventions for adapters and their view holders
 * Grouping conventions for tightly/loosely bounded interfaces
 * Usage of ORMs in favor of native SQLite Classes
@@ -647,6 +729,11 @@ in future releases without a fixed date.
 ### Naming {.unnumbered}
 
 * [http://jeroenmols.com/blog/2016/03/07/resourcenaming/](http://jeroenmols.com/blog/2016/03/07/resourcenaming/)
+
+
+### Logging {.unnumbered}
+
+* [http://www.masterzen.fr/2013/01/13/the-10-commandments-of-logging/](http://www.masterzen.fr/2013/01/13/the-10-commandments-of-logging/)
 
 ## License {.unnumbered}
 
