@@ -24,6 +24,7 @@ This style guide is inspired by and loosely build on the
   1. [Strings](#strings)
   1. [Classes & Contructors](#classes--constructors)
   1. [Naming Conventions](#naming-conventions)
+  1. [Asset Naming Conventions](#asset-naming-conventions)
   1. [Live templates](#live-templates)
   1. [Roadmap](#roadmap)
   1. [Resources](#resources)
@@ -497,8 +498,10 @@ This style guide is inspired by and loosely build on the
     class HTTPRequest {
     }
   
-  <a name="naming--layouts"></a><a name="10.6"></a>
-  - [10.6](#naming--layouts) Use snake_case for ids within layout files.
+## Asset naming conventions {.unnumbered}  
+  
+  <a name="naming--layouts"></a><a name="11.1"></a>
+  - [11.1](#naming--layouts) Use snake_case for ids within layout files.
   The id should be named after the following pattern:
   
     <WHERE>_<DESCRIPTION>_<WHAT>
@@ -519,8 +522,8 @@ This style guide is inspired by and loosely build on the
   
     TextView loginEmailTextView = ...;
 
-  <a name="naming--drawable-filenames"></a><a name="10.7"></a>
-  - [10.7](#naming--drawable-filenames) Drawable filenames should be 
+  <a name="naming--drawable-filenames"></a><a name="11.2"></a>
+  - [11.2](#naming--drawable-filenames) Drawable filenames should be 
   named after the following pattern:
   
     <WHAT>_<WHERE>_<DESCRIPTION>[_<SIZE>][_STATE]
@@ -541,13 +544,70 @@ This style guide is inspired by and loosely build on the
   `DESCRIPTION` should tell the reader what the actual purpose of the 
   drawable is. The `SIZE` part is optional and describes the size of the
   drawable. This can either be a measurable (e.g. 24dp) or a generic 
-  term (e.g. small). `STATE` indicates the state of the drawable. It can
-  be one of the following:
+  term (e.g. small). `STATE` indicates optionally the state of the 
+  drawable. It can be one of the following:
   
   * normal (can be omitted)
   * disabled
   * selected
   * pressed
+  
+  
+  <a name="naming--strings"></a><a name="11.3"></a>
+  - [11.3](#naming--strings) Strings should be named after the following
+  pattern:
+  
+    <WHERE>_<DESCRIPTION>
+    
+    // example
+    all_cancel
+    login_firstname
+    
+  The `WHERE`describes in which part of the app the string is used. If 
+  it is used in more than one screen use `all`. The `DESCRIPTION` should
+  tell the reader what the actual purpose of the string is.
+    
+  <a name="naming--dimens"></a><a name="11.4"></a>
+  - [11.4](#naming--dimens) Dimensions should be named after the 
+    following pattern:
+    
+      <WHAT>_<DESCRIPTION>[_<SIZE>]
+      
+      // example
+      height_toolbar
+      height_textsize_medium
+      margin_profileimage_16dp
+      
+  The `WHAT` indicates the type and thus the purpose of the dimens. It 
+  can be one of the following:
+  
+  * width (in dp)
+  * height (in dp)
+  * size (width == height, in dp)
+  * margin (in dp)
+  * padding (in dp)
+  * elevation (in dp)
+
+  Note that there are many other types, which can be used. The 
+  `DESCRIPTION` should tell the reader what the actual purpose of the 
+  dimens is. The `SIZE` part is optional and describes the size of the
+  drawable. This can either be a measurable (e.g. 24dp) or a generic 
+  term (e.g. small).
+  
+  <a name="naming--integers"></a><a name="11.5"></a>
+  - [11.5](#naming--integers) Integers should be named after the following
+  pattern:
+  
+    <WHERE>_<DESCRIPTION>
+    
+    // example
+    all_animation_duration
+    login_number_of_successful_tries
+  
+  The `WHERE`describes in which part of the app the integer is used. If 
+  it is used in more than one screen use `all`. The `DESCRIPTION` should
+  tell the reader what the actual purpose of the integer is.
+  
   
 **[back to top](#table-of-contents)**
 
@@ -562,13 +622,14 @@ in future releases without a fixed date.
 
 ### Next {.unnumbered}
 
-* Naming conventions for strings, dimens, integers, animations, styles, themes, values
+* Naming conventions for <strike>strings, dimens, integers</strike>, styles, themes
 * Conventions for View Injection using Butterknife
 * Conventions for Logging using Timber
 * Naming conventions for Listener-Interfaces and corresponding methods
 * Naming and Grouping conventions for adapters and their view holders
 * Grouping conventions for tightly/loosely bounded interfaces
 * Usage of ORMs in favor of native SQLite Classes
+* Describe Twine support for cross plattform string sharing
 
 ### Future {.unnumbered}
 
@@ -582,6 +643,10 @@ in future releases without a fixed date.
 * CLI for creating projects/templates
 
 ## Resources {.unnumbered}
+
+### Naming {.unnumbered}
+
+* [http://jeroenmols.com/blog/2016/03/07/resourcenaming/](http://jeroenmols.com/blog/2016/03/07/resourcenaming/)
 
 ## License {.unnumbered}
 
