@@ -18,8 +18,12 @@ brought ro proof in many commercial products for well known clients.
   1. [Strings](#strings)
   1. [Classes & Contructors](#classes--constructors)
   1. [Naming Conventions](#naming-conventions)
+  1. [Live templates](#live-templates)
+  
+  1. [Resources](#resources)
+  1. [License](#license)
 
-## 1 Gradle {.unnumbered}
+## Gradle {.unnumbered}
 
   <a name="gradle--version"></a><a name="1.1"></a>
   - [1.1](#gradle--version) Use at least version 2.3 for the build 
@@ -73,7 +77,7 @@ brought ro proof in many commercial products for well known clients.
 
 **[back to top](#table-of-contents)**
 
-## 2 Artifacts {.unnumbered}
+## Artifacts {.unnumbered}
 
   development, staging, produciton
 
@@ -99,7 +103,7 @@ brought ro proof in many commercial products for well known clients.
   
 **[back to top](#table-of-contents)**
 
-## 3 Libraries {.unnumbered}
+## Libraries {.unnumbered}
 
   <a name="libraries--version"></a><a name="3.1"></a>
   - [3.1](#libraries--version) Always use the latest version if possible.
@@ -131,7 +135,7 @@ brought ro proof in many commercial products for well known clients.
     
 **[back to top](#table-of-contents)**
 
-## 4 Modules {.unnumbered}
+## Modules {.unnumbered}
 
   <a name="modules--app"></a><a name="4.1"></a>
   - [4.1](#modules--app) Use the `app` module as the primary module, 
@@ -145,7 +149,7 @@ brought ro proof in many commercial products for well known clients.
 
 **[back to top](#table-of-contents)**
 
-## 5 Package Structure {.unnumbered}
+## Package Structure {.unnumbered}
 
   <a name="package-structure--app"></a><a name="5.1"></a>
   - [5.1](#package-structure--app) Package structure is important since 
@@ -197,7 +201,7 @@ brought ro proof in many commercial products for well known clients.
 
 **[back to top](#table-of-contents)**
 
-## 6 Style {.unnumbered}
+## Style {.unnumbered}
 
   <a name="style--preferred-stlye"></a><a name="6.1"></a>
   - [6.1](#style--preferred-stlye) Use the square android style for all
@@ -209,7 +213,7 @@ brought ro proof in many commercial products for well known clients.
 
 **[back to top](#table-of-contents)**
 
-## 7 Comments {.unnumbered}
+## Comments {.unnumbered}
 
   <a name="comments--multiline"></a><a name="7.1"></a>
   - [7.1](#comments--multiline) Use `/** ... */` for multi-line comments.
@@ -309,7 +313,7 @@ brought ro proof in many commercial products for well known clients.
 
 **[back to top](#table-of-contents)**
 
-## 8 Strings {.unnumbered}
+## Strings {.unnumbered}
 
   <a name="strings--format"></a><a name="8.1"></a>
   - [8.1](#strings--format) Use the `StringBuilder` to concatenate 
@@ -330,7 +334,7 @@ brought ro proof in many commercial products for well known clients.
     
 **[back to top](#table-of-contents)**
 
-## 9 Classes & Contructors {.unnumbered}
+## Classes & Contructors {.unnumbered}
 
   <a name="classes-constructors--constructor-variables"></a><a name="9.1"></a>
   - [9.1](#classes-constructors--constructor-variables) Reference class 
@@ -417,7 +421,7 @@ brought ro proof in many commercial products for well known clients.
   
 **[back to top](#table-of-contents)**
 
-## 10 Naming Conventions {.unnumbered}
+## Naming Conventions {.unnumbered}
 
   <a name="naming--descriptive"></a><a name="10.1"></a>
   - [10.1](#naming--descriptive) Avoid single letter names. Be 
@@ -541,6 +545,23 @@ brought ro proof in many commercial products for well known clients.
   
 **[back to top](#table-of-contents)**
 
+## Live templates
+
+## Resources
+
+## License
+
+(The MIT License)
+
+Copyright (c) 2017 appcom interactive GmbH
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+##
 missing:
 
 * naming strings, dimens, integers, animations, values, styles, themes
