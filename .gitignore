@@ -3,3 +3,7 @@
 *.iml
 .idea
 *.apk
+templates
+build
+scripts
+public
