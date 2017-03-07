@@ -4,7 +4,13 @@ This document describes the style guide applied to android projects for
 appcom interactive GmbH. It describes rules how to organize your
 project, packages and files, so that some best practises are held. 
 These best practises have developed over the last 5 years and are 
-brought ro proof in many commercial products for well known clients.
+brought to proof in many commercial products for well known clients.
+
+So use it in your favor if you want to and/or override the style guide 
+in any way you want.
+
+This style guide is inspired by and loosely build on the 
+[Javascript style guide by Airbnb](https://github.com/airbnb/javascript).
 
 ## Tables of Contents {.unnumbered #table-of-contents}
 
@@ -19,7 +25,7 @@ brought ro proof in many commercial products for well known clients.
   1. [Classes & Contructors](#classes--constructors)
   1. [Naming Conventions](#naming-conventions)
   1. [Live templates](#live-templates)
-  
+  1. [Roadmap](#roadmap)
   1. [Resources](#resources)
   1. [License](#license)
 
@@ -545,11 +551,39 @@ brought ro proof in many commercial products for well known clients.
   
 **[back to top](#table-of-contents)**
 
-## Live templates
+## Live templates {.unnumbered}
 
-## Resources
+## Roadmap {.unnumbered}
 
-## License
+This section describes items, which will be added to this style guide in 
+the future. These items are categorized in two sections namely
+`next` for items added in the next release and `future` for items added
+in future releases without a fixed date.
+
+### Next {.unnumbered}
+
+* Naming conventions for strings, dimens, integers, animations, styles, themes, values
+* Conventions for View Injection using Butterknife
+* Conventions for Logging using Timber
+* Naming conventions for Listener-Interfaces and corresponding methods
+* Naming and Grouping conventions for adapters and their view holders
+* Grouping conventions for tightly/loosely bounded interfaces
+* Usage of ORMs in favor of native SQLite Classes
+
+### Future {.unnumbered}
+
+* List and link to Live templates, which can be used in Android Studio
+* Architectural patterns (MVP, MVVM)
+* Description of the interactor pattern
+* Gradle project with important methods and classes based on this style guide
+* MVP Templates for Android Studio based on this style guide
+* Linter plugin for gradle based on this style guide
+* Library project for common classes
+* CLI for creating projects/templates
+
+## Resources {.unnumbered}
+
+## License {.unnumbered}
 
 (The MIT License)
 
@@ -560,22 +594,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-##
-missing:
-
-* naming strings, dimens, integers, animations, values, styles, themes
-* butterknife, timber, (dagger 2, rxjava, retrofit 2 -> best practises)
-* architektur pattern
-* Interfaces (OnClickListener -> onClicked())
-* adapters (packages)
-* interfaces in klassen oder außerhalb
-* verwendung eines ORMs
-* interactors
-
-
-* live templates snippets exportieren -> stash
-* appcom module mit wichtigen klassen (Base fragment, annotations, controllers, ...)
-* mvp templates (konfigurierbar)
-* linter schreiben
-* gradle project -> stash
