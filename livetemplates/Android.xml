@@ -1,0 +1,42 @@
+<templateSet group="Android">
+    <template name="rouiT"
+              value="getActivity().runOnUiThread(new Runnable() {&#10;    @Override&#10;    public void run() {&#10;        $cursor$&#10;    }&#10;});"
+              description="runOnUIThread" toReformat="true" toShortenFQNames="true">
+        <variable name="cursor" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template name="gone" value="$VIEW$.setVisibility(View.GONE);" description="Set view visibility to GONE"
+              toReformat="true" toShortenFQNames="true">
+        <variable name="VIEW" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template name="visible" value="$VIEW$.setVisibility(View.VISIBLE);" description="Set view visibility to VISIBLE"
+              toReformat="true" toShortenFQNames="true">
+        <variable name="VIEW" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template name="govi" value="$VIEW$.setVisibility($CONDITION$ ? View.GONE : View.VISIBLE);"
+              description="Set view visibility to GONE if condition is met and VISIBLE otherwise" toReformat="false"
+              toShortenFQNames="true">
+        <variable name="VIEW" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="CONDITION" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA_STATEMENT" value="true"/>
+        </context>
+    </template>
+    <template name="vigo" value="$VIEW$.setVisibility($CONDITION$ ? View.VISIBLE : View.GONE);"
+              description="Set view visibility to VISIBLE if condition is met and GONE otherwise" toReformat="false"
+              toShortenFQNames="true">
+        <variable name="VIEW" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="CONDITION" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA_STATEMENT" value="true"/>
+        </context>
+    </template>
+</templateSet>

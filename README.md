@@ -695,6 +695,257 @@ This style guide is inspired by and loosely build on the
 
 ## Live templates {.unnumbered}
 
+The following is a list of live templates, which can be found 
+[here](livetemplates). Theses are grouped by certain topics. Each group 
+has several live templates, which are described in the following. We 
+list the shortcut and a preview of the code, which will be generated. If
+necessary the code will be explained in comments. We will use variables
+the same way Android Studio (and IntelliJ in general) does. 
+
+For those who are not familiar with this should check it out 
+[here](https://www.jetbrains.com/help/idea/2016.3/live-templates.html). 
+
+### Android {.unnumbered}
+
+* rouiT
+
+    ```
+    getActivity().runOnUiThread(new Runnable() {
+        public void run() {
+            $END$
+        }
+    });
+    ``` 
+
+* gone
+
+    ```
+    $VIEW$.setVisibility(View.GONE);
+    ```
+    
+* visible
+
+    ```
+    $VIEW$.setVisibility(View.VISIBLE);
+    ``` 
+
+* govi
+
+    ```
+    $VIEW$.setVisibility($CONDITION$ ? View.GONE : View.VISIBLE);
+    ```
+    
+* vigo
+    
+    ```
+    $VIEW$.setVisibility($CONDITION$ ? View.VISIBILE : View.GONE);
+    ```
+
+### ButterKnife {.unnumbered}
+
+* bind 
+
+    ```
+    @Bind(R.id.$VIEW_ID$) $TYPE$ $VIEW_ID_CAMELCASED$;
+    ```
+    
+where as `$VIEW_ID_CAMELCASED$` is the camelcased value of `$VIEW_ID$`.
+
+* binv 
+
+    ```
+    @BindView(R.id.$VIEW_ID$) $TYPE$ $VIEW_ID_CAMELCASED$;
+    ```
+
+where as `$VIEW_ID_CAMELCASED$` is the camelcased value of `$VIEW_ID$`.
+
+* binddrawable 
+
+    ```
+    @BindDrawable(R.drawable.$DRAWABLE_ID$) Drawable $DRAWABLE_ID_CAMELCASED$Drawable;
+    ```
+
+where as `$DRAWABLE_ID_CAMELCASED$` is the camelcased value of `$DRAWABLE_ID$`.
+
+* bindcolor
+
+    ```
+    @BindColor(R.color.$COLOR_ID$) int $COLOR_ID_CAMELCASED$Color;
+    ```
+    
+where as `$COLOR_ID_CAMELCASED$` is the camelcased value of `$COLOR_ID$`;
+
+* bindstring
+
+    ```
+    @BindString(R.color.$String_ID$) String $String_ID_CAMELCASED$String;
+    ```
+    
+where as `$STRING_ID_CAMELCASED$` is the camelcased value of `$STRING_ID$`; 
+
+* onclick
+
+    ```
+    @OnClick(R.id.$VIEW_ID$) public void on$VIEW_ID_CAPITALIZED$Clicked(View view) {
+        $END$
+    }
+    ```
+    
+where as $VIEW_ID_CAPITALIZED$ is the capitalized value of $VIEW_ID$.
+
+* onlongclick
+
+    ```
+    @OnLongClick(R.id.$VIEW_ID$) public void on$VIEW_ID_CAPITALIZED$LongClicked(View view) {
+        $END$
+    }
+    ```
+    
+where as $VIEW_ID_CAPITALIZED$ is the capitalized value of $VIEW_ID$.
+
+* ontouch 
+
+    ```
+    @OnTouch(R.id.$VIEW_ID$) public boolean on$VIEW_ID_CAPITALIZED$Touched() {
+        $END$
+    }
+    ```    
+
+where as $VIEW_ID_CAPITALIZED$ is the capitalized value of $VIEW_ID$.
+
+* onitemselected 
+
+    ```
+    @OnItemSelected(R.id.$VIEW_ID$) public boolean on$VIEW_ID_CAPITALIZED$Selected(int position) {
+        $END$
+    }
+    ```
+    
+where as $VIEW_ID_CAPITALIZED$ is the capitalized value of $VIEW_ID$.
+
+### Dagger 2 {.unnumbered}
+
+* inj
+
+    ```
+    @Inject $END$
+    ``` 
+
+* injc
+
+    ```
+    @Inject public $CLASS$() {
+        $END$
+    }
+    ``` 
+
+* pro
+
+    ```
+    @Provides $END$
+    ```
+    
+* sing
+
+    ```
+    @Singleton $END$
+    ```
+    
+* ppa
+ 
+    ```
+    @Provides @PerActivity public $CLASS$ provide$CLASS$($CLASS$Impl $CLASS_COPY$Impl) {
+        return $CLASS_COPY$Impl; 
+    }
+    ```
+    
+where as `$CLASS_COPY$` is the decapitalized value of `$CLASS$`.   
+ 
+* ppf
+  
+    ```
+    @Provides @PerFragment public $CLASS$ provide$CLASS$($CLASS$Impl $CLASS_COPY$Impl) {
+        return $CLASS_COPY$Impl; 
+    }
+    ```
+     
+where as `$CLASS_COPY$` is the decapitalized value of `$CLASS$`.   
+
+* pps
+  
+    ```
+    @Provides @Singleton public $CLASS$ provide$CLASS$($CLASS$Impl $CLASS_COPY$Impl) {
+        return $CLASS_COPY$Impl; 
+    }
+    ```
+     
+where as `$CLASS_COPY$` is the decapitalized value of `$CLASS$`.   
+
+### RxJava 2 {.unnumbered}
+
+* rxsingle
+
+    ```
+    Single.create(subscriber -> {
+        $END$ 
+    });
+    ```
+    
+* rxcompletable
+
+    ```
+    Completable.create(subscriber -> {
+        $END$
+    });
+    ```
+    
+* rxobservable
+
+    ```
+    Observable.create(subscriber -> {
+        $END$
+    });
+    
+* rxflowable 
+
+    ```
+    Flowable.create(subscriber -> {
+        $END$
+    }, $STRATEGY$);
+    ```
+
+* rxsuccess
+
+    ```
+    subscriber.onSuccess($END$);
+    ```
+    
+* rxerror
+
+    ```
+    subscriber.onError($END$);
+    ```
+    
+* rxcompleted
+    
+    ```
+    subscriber.onCompleted();
+    ```
+
+* rxnext
+    
+    ```
+    subscriber.onNext($NED$);
+    ```
+    
+### Timber {.unnumbered}
+
+* timd
+
+    ```
+    Timber.d($END$);
+    ```
+
 ## Roadmap {.unnumbered}
 
 This section describes items, which will be added to this style guide in 
