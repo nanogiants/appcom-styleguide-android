@@ -1,5 +1,8 @@
 # Appcom Android Style Guide {.unnumbered}
 
+// TODO: Bei den Codebeispielen ist es sinnvoller, erst das korrekte Beispiel anzuzeigen, und danach das falsche. (Simon)
+// TODO: Codebeispiele mit mehreren Sub-Beispielen sollten evtl. deutlicher getrennt werden (horizontale Linie o.ä.)
+
 This document describes the style guide applied to android projects for 
 appcom interactive GmbH. It describes rules how to organize your
 project, packages and files, so that some best practises are held. 
@@ -52,6 +55,8 @@ This style guide is inspired by and loosely build on the
   <a name="gradle--global-declarations"></a><a name="1.3"></a>
   - [1.3](#gradle--global-declarations) Declare commonly used variables
   as global variables in the project gradle file. This concerns usually
+
+  // TODO: Macht es hier Sinn, immer den Präfix "android" zu verwenden? Wäre es nicht ohne den Präfix etwas lesbarer / übersichtlicher? (Simon)
   
   * build tool version (androidBuildToolsVersion)
   * compile sdk version (androidCompileSdkVersion)
@@ -88,6 +93,8 @@ This style guide is inspired by and loosely build on the
   tag. The initial commit must be tagged with `0.0.0`. Each tag must 
   conform the [SemVer](http://semver.org/) Specification.
 
+  // TODO: Hier wäre ein Template o.ä. sinnvoll (Simon)
+
 **[back to top](#table-of-contents)**
 
 ## Artifacts {.unnumbered}
@@ -113,6 +120,8 @@ This style guide is inspired by and loosely build on the
   * develop (Development)
   * staging (Preproduction)
   * production (Production)
+
+  // TODO: Hier wäre ein allgemeingültiges Dokument sinnvoll, welches diese Konventionen für alle Projekte und alle Plattformen definiert (Simon)
   
 **[back to top](#table-of-contents)**
 
@@ -134,6 +143,8 @@ This style guide is inspired by and loosely build on the
   * Depdency Injection
   * Utilities
   * Misc
+
+  // TODO: Diese Liste müsste evtl. erweitert werden um weitere optionale Kategorien, z.B. Debug, Analysis, Push, ... (Simon)
   
   Example:
   
@@ -159,6 +170,8 @@ This style guide is inspired by and loosely build on the
   - [4.2](#modules--model) Use the `model` module as the data layer for 
   your application. This module does not hold a reference to an android
   specific context or object.
+
+  // TODO: Wie sieht es hier aus mit z.B. Asset-Datasources? Diese benötigen ja doch einen Android-Context (Simon)
 
 **[back to top](#table-of-contents)**
 
@@ -189,6 +202,8 @@ This style guide is inspired by and loosely build on the
   usecase, which needs to be implemented. Each class name should end 
   with the respective package name (e.g. ScrollStateListener in the 
   listeners package), except for the `di` and `fragment` package.
+
+  // TODO: Ist es vielleicht eine Überlegung wert, bei den Fragments und Presentern anstatt der Endung "Impl" evtl. besser das Interface durch eine Endung, z.B. "Interface", zu benennen, um die Namensgebung konsistenter zu gestalten? (Simon)
 
   <a name="package-structure--model"></a><a name="5.2"></a>
   - [5.2](#package-structure--model) Each package name should be used in
@@ -224,6 +239,8 @@ This style guide is inspired by and loosely build on the
   <a name="style--line-length"></a><a name="6.2"></a>
   - [6.2](#style--line-length) Use a line length of 120 characters.
 
+  // TODO: Anleitung zum Einrichten bzw. Link darauf (Simon)
+
 **[back to top](#table-of-contents)**
 
 ## Comments {.unnumbered}
@@ -254,6 +271,7 @@ This style guide is inspired by and loosely build on the
   Place single line comments on a newline above the subject of the 
   comment. Put an empty line before the comment unless it's on the first
   line of a block.
+  // TODO: Irgendwie ist das etwas inkonsistent, entweder sollte man immer eine leere line vor einem Kommentar haben oder nicht. (Simon)
   
     // bad
     int active = true;  // is current tab
@@ -418,6 +436,7 @@ This style guide is inspired by and loosely build on the
   something like this `[Lcom.foo.Object;@28a418fc`. So keep yourself 
   from this and create a `toString`-Method. Also todays IDEs can create
   it automatically. 
+  // TODO: Tastenkombination einfügen für Android Studio (Simon)
   
   <a name="classes-constructors--solid"></a><a name="9.3"></a>
   - [9.3](#classes-constructors--solid) Classes should be as 
@@ -425,6 +444,8 @@ This style guide is inspired by and loosely build on the
   as possbile. Although this is an architectural pattern it applies to 
   classes in particular and should be mentioned as such. This means in 
   general:
+
+  // TODO: Das ist eher ein Architektur-Thema und erscheint hier fehl am Platz (Simon)
   
   * `S`ingle responsible principle
   * `O`pen/Closed principle
@@ -467,6 +488,7 @@ This style guide is inspired by and loosely build on the
   <a name="naming--pascalcase"></a><a name="10.3"></a>
   - [10.3](#naming--pascalcase) Use PascalCase only when naming classes,
   constructors and filenames.
+  // TODO: All filenames? (Simon)
   
     // bad
     class testCase {
@@ -483,6 +505,8 @@ This style guide is inspired by and loosely build on the
   concept including private date. Use this instead of naming conentions.
   Also underscores make the code harder to read and breaks the overall
   style, since Java names are composed of camelCases and PascalCases.
+
+  // TODO: Code example (Simon)
 
   <a name="naming--acronyms-and-initialisms"></a><a name="10.5"></a>
   - [10.5](#naming--acronyms-and-initialisms) Acronyms and initialisms
@@ -622,6 +646,8 @@ This style guide is inspired by and loosely build on the
   * padding (in dp)
   * elevation (in dp)
 
+  // TODO: Font sizes? (Simon)
+
   Note that there are many other types, which can be used. The 
   `DESCRIPTION` should tell the reader what the actual purpose of the 
   dimens is. The `SIZE` part is optional and describes the size of the
@@ -646,6 +672,8 @@ This style guide is inspired by and loosely build on the
 **[back to top](#table-of-contents)**
 
 ## Logging {.unnumbered}
+
+// TODO: Hier erscheinen weitere Beispiele und best practises sehr hilfreich und sollten ergänzt werden (Simon)
 
   <a name="logging--loglevels"></a><a name="12.1"></a>
   - [12.1](#logging--loglevels) Android provides a various amount of log
