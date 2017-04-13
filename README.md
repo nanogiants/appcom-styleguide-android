@@ -1,6 +1,5 @@
 # Appcom Android Style Guide {.unnumbered}
 
-// TODO: Bei den Codebeispielen ist es sinnvoller, erst das korrekte Beispiel anzuzeigen, und danach das falsche. (Simon)
 // TODO: Codebeispiele mit mehreren Sub-Beispielen sollten evtl. deutlicher getrennt werden (horizontale Linie o.ä.)
 
 This document describes the style guide applied to android projects for 
@@ -39,11 +38,11 @@ This style guide is inspired by and loosely build on the
   <a name="gradle--version"></a><a name="1.1"></a>
   - [1.1](#gradle--version) The android gradle plugin should use at least version 2.3.1 to support Instant run. You should not use dynamic dependencies in version numbers. Using this feature can cause unexpected version updates and difficulty resolving version differences.
 
-    // bad
-    classpath 'com.android.tools.build:gradle:2.+'
-    
     // good
     classpath 'com.android.tools.build:gradle:2.3.1'
+
+    // bad
+    classpath 'com.android.tools.build:gradle:2.+'
    
   <a name="gradle--structure"></a><a name="1.2"></a>
   - [1.2](#gradle--structure) Create one gradle file per module and one 
@@ -107,13 +106,13 @@ This style guide is inspired by and loosely build on the
   
     $COMPANYNAME$-$APPNAME$-$STAGE$-$VERSIONNAME$.$VERSIONCODE$.apk 
     
-    // bad
-    appcom-swipe.apk
-    swipe-0.0.1.apk
-    
     // good
     appcom-swipe-production-0.0.2.127.apk
     appcom-swipe-develop-0.0.2.20.apk
+
+    // bad
+    appcom-swipe.apk
+    swipe-0.0.1.apk
   
   Stages can be one of the following:
   
@@ -248,14 +247,6 @@ This style guide is inspired by and loosely build on the
   <a name="comments--multiline"></a><a name="7.1"></a>
   - [7.1](#comments--multiline) Use `/** ... */` for multi-line comments.
   
-    // bad
-  
-    // this does something
-    // @param tag The tag.
-    private void doSomething(String tag) {
-      ... 
-    }
-  
     // good 
   
     /** 
@@ -265,6 +256,14 @@ This style guide is inspired by and loosely build on the
     private void doSomething(String tag) {
       ...
     }
+
+    // bad
+  
+    // this does something
+    // @param tag The tag.
+    private void doSomething(String tag) {
+      ... 
+    }
   
   <a name="comments--singleline"></a><a name="7.2"></a>
   - [7.2](#comments--singleline) Use `//` for single line comments. 
@@ -273,21 +272,13 @@ This style guide is inspired by and loosely build on the
   line of a block.
   // TODO: Irgendwie ist das etwas inkonsistent, entweder sollte man immer eine leere line vor einem Kommentar haben oder nicht. (Simon)
   
-    // bad
-    int active = true;  // is current tab
-    
     // good
     // is current tab
     int active = true;
-    
+
     // bad
-    private int getType() {
-        Log.d(TAG, "Fetching type...");
-        // set the default type to 'no type'
-        int type = this._type ? this._type : -1;
-        
-        return type;
-    }
+    int active = true;  // is current tab
+    
     
     // good
     private int getType() {
@@ -298,6 +289,16 @@ This style guide is inspired by and loosely build on the
         
         return type;
     }
+
+    // bad
+    private int getType() {
+        Log.d(TAG, "Fetching type...");
+        // set the default type to 'no type'
+        int type = this._type ? this._type : -1;
+        
+        return type;
+    }
+    
     
     // also good
     private int getType() {
@@ -310,13 +311,13 @@ This style guide is inspired by and loosely build on the
   <a name="comments--spaces"></a><a name="7.3"></a>
   - [7.3](#comments--spaces) Start all comments with a space to make it easier to read. 
 
-    // bad
-    //is current tab
-    int active = true;  
-    
     // good
     // is current tab
     int active = true;
+
+    // bad
+    //is current tab
+    int active = true;  
 
   <a name="comments--fixme"></a><a name="7.4"></a>
   - [7.5](#comments--fixme) Use `// FIXME:` to annotate problems.
@@ -353,15 +354,15 @@ This style guide is inspired by and loosely build on the
   will convert String concatenation to `StringBuilder` calls.
   
     int value = 20;
+
+    // good
+    String value = StringBuilder().append(value).append(" melons").toString();
     
     // bad
     String value = value + " melons";
     
     // also bad 
     String value = String.format("%d melons", value);
-    
-    // good
-    String value = StringBuilder().append(value).append(" melons").toString();
     
 **[back to top](#table-of-contents)**
 
@@ -372,6 +373,16 @@ This style guide is inspired by and loosely build on the
   inside a constructor always with `this`. Omit `this` outside the 
   constructor, except a parameter would shadow the class member.
   
+    // good
+    class Klass {
+      
+      private int value;  
+  
+      public Klass() {
+        this.value = 20;
+      }
+    }
+
     // bad
     class Klass {
     
@@ -382,27 +393,6 @@ This style guide is inspired by and loosely build on the
       }
     }
     
-    // good
-    class Klass {
-      
-      private int value;  
-  
-      public Klass() {
-        this.value = 20;
-      }
-    }
-    
-    // bad 
-    class Klass {
-    
-      private int value;
-      
-      ... 
-      
-      public int getValue() {
-        return this.value;
-      }
-    }
     
     // good
     class Klass {
@@ -427,7 +417,19 @@ This style guide is inspired by and loosely build on the
         this.value = value;
         ...
       }
-    }     
+    }
+
+    // bad 
+    class Klass {
+    
+      private int value;
+      
+      ... 
+      
+      public int getValue() {
+        return this.value;
+      }
+    }  
   
   <a name="classes-constructors--tostring"></a><a name="9.2"></a>
   - [9.2](#classes-constructors--tostring) Add always a toString method
@@ -464,38 +466,38 @@ This style guide is inspired by and loosely build on the
   of the variable. If the name of the variable gets you there the naming
   is good!
   
-    // bad
-    int a = 10;
-    int value = 20; // bad since, this does not tell the proper purpose of the variable
-  
     // good since it is verbose enough to tell you what the object references with the variable is supposed to do.
     TextView firstnameTextView = ...;
     int age = 12;
     String lastName;
+
+    // bad
+    int a = 10;
+    int value = 20; // bad since, this does not tell the proper purpose of the variable
   
   <a name="naming--camelcase"></a><a name="10.2"></a>
   - [10.2](#naming--camelcase) Use camelCase when naming objects, 
   functions and instances.
   
-    // bad
-    int TEst = 0;
-    String first_name = "Hans";
-    
     // good
     int test = 0;
     String firstName = "Hans";
+
+    // bad
+    int TEst = 0;
+    String first_name = "Hans";
 
   <a name="naming--pascalcase"></a><a name="10.3"></a>
   - [10.3](#naming--pascalcase) Use PascalCase only when naming classes,
   constructors and filenames.
   // TODO: All filenames? (Simon)
   
-    // bad
-    class testCase {
-    }
-    
     // good
     class TestCase {
+    }
+
+    // bad
+    class testCase {
     }
   
   <a name="naming--leading-underscore"></a><a name="10.4"></a>
@@ -514,20 +516,20 @@ This style guide is inspired by and loosely build on the
   
   > Why? Names are for readability, not to appease a computer algorithm.
   
-    // bad 
-    class SmsContainer {
-    }
-    
-    // bad 
-    class HttpRequest {
-    }
-    
     // good
     class SMSContainer {
     }
     
     // good 
     class HTTPRequest {
+    }
+
+    // bad 
+    class SmsContainer {
+    }
+    
+    // bad 
+    class HttpRequest {
     }
   
   <a name="naming--listener-interafaces"></a><a name="10.6"></a>
@@ -536,22 +538,23 @@ This style guide is inspired by and loosely build on the
   with `Listener`. Every method within this interface should be written 
   in past tense and should start with `on`.
    
+    // good 
+    public interface OnClickListener { ... }
+    public interface OnScollListener { ... }
+
     // bad
     public interface ClickListener { ... }
     public interface OnScrolledListener { ... }
     
-    // good 
-    public interface OnClickListener { ... }
-    public interface OnScollListener { ... }
-    
-    // bad 
-    public interface OnClickListener {
-        void onClick(...) { ... }
-    }
     
     // good 
     public interface OnClickListener {
         void onClicked(...) { ... }
+    }
+
+    // bad 
+    public interface OnClickListener {
+        void onClick(...) { ... }
     }
   
 **[back to top](#table-of-contents)**
@@ -719,14 +722,14 @@ This style guide is inspired by and loosely build on the
   Make sure that the payload is well formatted and complete. The format 
   helps you to filter and/or search for certain events.
   
+    // good
+    Transaction failed: { id: 63287, checksum: null }
+
     // bad
     Transaction failed!
     
     // bad. Payload included but hard to read/parse
     Transaction '63287' failed: Checksum 'null' is invalid!
-    
-    // good
-    Transaction failed: { id: 63287, checksum: null }
 
 ## Live templates {.unnumbered}
 
