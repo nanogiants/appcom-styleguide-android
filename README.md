@@ -38,6 +38,8 @@ This style guide is inspired by and loosely build on the
   <a name="gradle--version"></a><a name="1.1"></a>
   - [1.1](#gradle--version) The android gradle plugin should use at least version 2.3.1 to support Instant run. You should not use dynamic dependencies in version numbers. Using this feature can cause unexpected version updates and difficulty resolving version differences.
 
+  // TODO: Neben Instant Run spricht auch dafür das seit 2.2 kein apt bzw. android-apt plugin mehr notwendig ist -> integrierter annotationProcessor (Thomas)
+
     // good
     classpath 'com.android.tools.build:gradle:2.3.1'
 
@@ -246,6 +248,8 @@ This style guide is inspired by and loosely build on the
 
   <a name="comments--multiline"></a><a name="7.1"></a>
   - [7.1](#comments--multiline) Use `/** ... */` for multi-line comments.
+
+  // TODO: Evtl. als "Block Comments" bezeichnen? Afaik verwendet Android Studio per Default `/* ... */`, daher ggf. Anleitung. (Thomas)
   
     // good 
   
@@ -289,6 +293,8 @@ This style guide is inspired by and loosely build on the
         
         return type;
     }
+
+    // TODO: Widerspricht den "Naming Conventions" (leading underscores), daher vllt auch in den Beispielen vermeiden
 
     // bad
     private int getType() {
@@ -352,6 +358,9 @@ This style guide is inspired by and loosely build on the
   strings. Why: It is much faster than `String.format` and the 
   `+`-Operator on Strings. Also most of the time the java compiler
   will convert String concatenation to `StringBuilder` calls.
+
+  // TODO: Ist es eine Erwähnung wert, innerhalb der append() Methode logischerweise auch keinen `+`-Operator zu nutzen, (würde intern
+  // neuen StringBuilder erzeugen) außer es werden lediglich Konstanten verkettet (dies kann der Compiler sogar optimieren)? (Thomas)
   
     int value = 20;
 
@@ -363,6 +372,8 @@ This style guide is inspired by and loosely build on the
     
     // also bad 
     String value = String.format("%d melons", value);
+
+    // TODO: Vielleicht einheitlich Methode zum Erzeugen eines String aus Integer bzw. Float definieren. (Thomas)
     
 **[back to top](#table-of-contents)**
 
