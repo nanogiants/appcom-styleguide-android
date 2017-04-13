@@ -373,7 +373,8 @@ This style guide is inspired by and loosely build on the
     // also bad 
     String value = String.format("%d melons", value);
 
-    // TODO: Vielleicht einheitlich Methode zum Erzeugen eines String aus Integer bzw. Float definieren. (Thomas)
+
+  // TODO: Vielleicht einheitlich Methode zum Erzeugen eines String aus Integer bzw. Float definieren. (Thomas)
     
 **[back to top](#table-of-contents)**
 
