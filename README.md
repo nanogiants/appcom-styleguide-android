@@ -702,7 +702,7 @@ This style guide is inspired by and loosely build on the
   
   * The filename and linenumber of the log statement (optionally the methodname to make it easier to categorize the log purely from reading)
   * A meaningful log message
-  * An expressive payload, usually a Java object (That's way you should always add a toString Method - see [here](#classes-constructors--tostring)
+  * An expressive payload, usually a Java object (That's why you should always add a toString Method - see [here](#classes-constructors--tostring)
   
   <a name="logging--message-language"></a><a name="12.3"></a>
   - [12.3](#logging--message-language) Write your log messages in 
