@@ -34,8 +34,13 @@ This style guide is inspired by and loosely build on the
 ## Gradle {.unnumbered}
 
   <a name="gradle--version"></a><a name="1.1"></a>
-  - [1.1](#gradle--version) Use at least version 2.3 for the build 
-  gradle to support Instant run.
+  - [1.1](#gradle--version) The android gradle plugin should use at least version 2.3.1 to support Instant run. You should not use dynamic dependencies in version numbers. Using this feature can cause unexpected version updates and difficulty resolving version differences.
+
+    // bad
+    classpath 'com.android.tools.build:gradle:2.+'
+    
+    // good
+    classpath 'com.android.tools.build:gradle:2.3.1'
    
   <a name="gradle--structure"></a><a name="1.2"></a>
   - [1.2](#gradle--structure) Create one gradle file per module and one 
@@ -173,7 +178,7 @@ This style guide is inspired by and loosely build on the
   | adapters | Contains all the adapters of any kind used in the project. |
   | annotations | Contains the annotations used in the project. |
   | di | Contains classes used for establishing dependency injection. |
-  | dialogs | Contains classes, which are shown as Dialog. Note that you may or may not need this package depending on which dialog framework you are using in your app. |
+  | dialogs | Contains classes, which are shown as Dialog. |
   | fragments | Contains fragment packages (depending on the architectural pattern used). |
   | managers | Contains managers used in the project. |
   | listeners | Contains listeners used in your app. These do not need to be cohesive. You can add listeners for animations, lists or ui events. |
@@ -325,7 +330,7 @@ This style guide is inspired by and loosely build on the
 
   <a name="strings--format"></a><a name="8.1"></a>
   - [8.1](#strings--format) Use the `StringBuilder` to concatenate 
-  strings. Why: IT is much faster than `String.format` and the 
+  strings. Why: It is much faster than `String.format` and the 
   `+`-Operator on Strings. Also most of the time the java compiler
   will convert String concatenation to `StringBuilder` calls.
   
@@ -442,8 +447,10 @@ This style guide is inspired by and loosely build on the
     int a = 10;
     int value = 20; // bad since, this does not tell the proper purpose of the variable
   
-    // good
-    TextView firstnameTextView = ...; // good since it is verbose enough to tell you what the object references with the variable is supposed to do. 
+    // good since it is verbose enough to tell you what the object references with the variable is supposed to do.
+    TextView firstnameTextView = ...;
+    int age = 12;
+    String lastName;
   
   <a name="naming--camelcase"></a><a name="10.2"></a>
   - [10.2](#naming--camelcase) Use camelCase when naming objects, 
@@ -958,7 +965,7 @@ in future releases without a fixed date.
 * Naming conventions for <strike>strings, dimens, integers</strike>, styles, themes
 * Conventions for View Injection using Butterknife
 * <strike>Conventions for Logging</strike> 
-* <strike>Naming conventions for Listener-Interfaces and corresponding methods</striker>
+* <strike>Naming conventions for Listener-Interfaces and corresponding methods</strike>
 * Naming and Grouping conventions for adapters and their view holders
 * Grouping conventions for tightly/loosely bounded interfaces
 * Usage of ORMs in favor of native SQLite Classes
