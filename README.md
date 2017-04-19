@@ -57,14 +57,12 @@ This style guide is inspired by and loosely build on the
   - [1.3](#gradle--global-declarations) Declare commonly used variables
   as global variables in the project gradle file. This concerns usually
 
-  // TODO: Macht es hier Sinn, immer den Präfix "android" zu verwenden? Wäre es nicht ohne den Präfix etwas lesbarer / übersichtlicher? (Simon)
-  
-  * build tool version (androidBuildToolsVersion)
-  * compile sdk version (androidCompileSdkVersion)
-  * min sdk version (androidMinSdkVersion)
-  * target sdk version (androidTargetSdkVersion)
-  * version code (androidVersionCode)
-  * version name (androidVersionName)
+  * build tool version (buildToolsVersion)
+  * compile sdk version (compileSdkVersion)
+  * min sdk version (minSdkVersion)
+  * target sdk version (targetSdkVersion)
+  * version code (versionCode)
+  * version name (versionName)
   
   Also you should declare versions of library clusters (e.g. retrofit,
   google libraries, rxjava) to make library invocations easier.
