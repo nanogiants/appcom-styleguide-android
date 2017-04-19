@@ -273,7 +273,6 @@ This style guide is inspired by and loosely build on the
   Place single line comments on a newline above the subject of the 
   comment. Put an empty line before the comment unless it's on the first
   line of a block.
-  // TODO: Irgendwie ist das etwas inkonsistent, entweder sollte man immer eine leere line vor einem Kommentar haben oder nicht. (Simon)
   
     // good
     // is current tab
@@ -288,27 +287,25 @@ This style guide is inspired by and loosely build on the
         Log.d(TAG, "Fetching type...");
         
         // set the default type to 'no type'
-        int type = this._type ? this._type : -1;
+        int typeOut = this.type ? this.type : -1;
         
-        return type;
+        return typeOut;
     }
-
-    // TODO: Widerspricht den "Naming Conventions" (leading underscores), daher vllt auch in den Beispielen vermeiden
 
     // bad
     private int getType() {
         Log.d(TAG, "Fetching type...");
         // set the default type to 'no type'
-        int type = this._type ? this._type : -1;
+        int typeOut = this.type ? this.type : -1;
         
-        return type;
+        return typeOut;
     }
     
     
     // also good
     private int getType() {
         // set the default type to 'no type'
-        int type = this._type ? this._type : -1;
+        int typeOut = this.type ? this.type : -1;
         
         return type;
     }
