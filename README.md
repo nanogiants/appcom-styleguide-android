@@ -515,7 +515,22 @@ This style guide is inspired by and loosely build on the
   Also underscores make the code harder to read and breaks the overall
   style, since Java names are composed of camelCases and PascalCases.
 
-  // TODO: Code example (Simon)
+    // good
+    private int counter;
+
+    // bad
+    int _counter;
+
+
+    // good
+    void setText (String text) {
+    this.text = text;
+    }
+
+    // bad
+    void setText (String _text) {
+    this.text = _text;
+    }
 
   <a name="naming--acronyms-and-initialisms"></a><a name="10.5"></a>
   - [10.5](#naming--acronyms-and-initialisms) Acronyms and initialisms
