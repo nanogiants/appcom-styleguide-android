@@ -129,6 +129,7 @@ This style guide is inspired by and loosely build on the
   <a name="libraries--version"></a><a name="3.1"></a>
   - [3.1](#libraries--version) Always use the latest version if possible.
   Make sure to migrate also major releases if possible.
+  You should not use dynamic dependencies in version numbers. Using this feature can cause unexpected version updates and difficulty resolving version differences.
   
   <a name="libraries--grouping"></a><a name="3.2"></a>
   - [3.2](#libraries--grouping) Group library definitions in their 
