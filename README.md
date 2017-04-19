@@ -652,11 +652,10 @@ This style guide is inspired by and loosely build on the
   * width (in dp)
   * height (in dp)
   * size (width == height, in dp)
+  * fontsize (in sp)
   * margin (in dp)
   * padding (in dp)
   * elevation (in dp)
-
-  // TODO: Font sizes? (Simon)
 
   Note that there are many other types, which can be used. The 
   `DESCRIPTION` should tell the reader what the actual purpose of the 
