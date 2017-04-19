@@ -144,7 +144,7 @@ This style guide is inspired by and loosely build on the
   * Utilities
   * Misc
 
-  // TODO: Diese Liste müsste evtl. erweitert werden um weitere optionale Kategorien, z.B. Debug, Analysis, Push, ... (Simon)
+  // TODO: (Simon) Was ist der Unterschied zwischen "Misc" und "Utilities"? Die Trennung scheint hier etwas schwammig, daher schlage ich eine Umbenennung von "Utilities" zu "Debug Tools" vor. In diese Kategorien würden alle Tools und Libraries fallen, welche nur für die Entwickler von Wert sind, z.B. Timber, Stetho, LeakCanary, etc. In die Kategorie "Misc" würden dann alle übrigen Libraries eingeordnet werden, die in keine der anderen Kategorien passen.
   
   Example:
   
