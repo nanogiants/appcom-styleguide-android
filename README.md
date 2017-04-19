@@ -497,8 +497,7 @@ This style guide is inspired by and loosely build on the
 
   <a name="naming--pascalcase"></a><a name="10.3"></a>
   - [10.3](#naming--pascalcase) Use PascalCase only when naming classes,
-  constructors and filenames.
-  // TODO: All filenames? (Simon)
+  constructors and other java filenames.
   
     // good
     class TestCase {
