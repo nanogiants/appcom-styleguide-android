@@ -1,0 +1,41 @@
+ext.gitCommitCount = {
+  return 'git rev-list --count HEAD'.execute([], project.rootDir).text.trim().toInteger()
+}
+
+ext.gitTag = {
+  def revlist = 'git rev-list --tags --max-count=1'.execute([], project.rootDir).text.trim()
+  def versionName = ('git describe --tags ' + revlist.toString()).execute([], project.rootDir).text.trim()
+  if (versionName != null) {
+    return versionName
+  } else {
+    return "NO_VERSION"
+  }
+}
+
+ext.gitCommitCountSinceLastTag = {
+  def revlist = 'git rev-list --tags --max-count=1'.execute([], project.rootDir).text.trim()
+  def versionName = ('git describe --tags ' + revlist.toString()).execute([], project.rootDir).text.trim()
+  if (versionName != null) {
+    def gitCommitCountSinceLastTag = ('git rev-list ' + versionName.toString() + '.. --count').execute([],
+        project.rootDir).text.trim().toInteger()
+    return gitCommitCountSinceLastTag
+  } else {
+    return 0
+  }
+}
+
+ext.gitSha1 = {
+  return 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim().toString()
+}
+
+ext.generateVersionName = {
+  String branchName = 'git rev-parse --abbrev-ref HEAD'.execute([], project.rootDir).text.trim()
+  if (gitCommitCountSinceLastTag() == 0 ||
+      branchName.equals("master") ||
+      branchName.contains("release") ||
+      branchName.contains("hotfix")) {
+    return gitTag()
+  } else {
+    return gitTag() + "." + gitCommitCountSinceLastTag()
+  }
+}
