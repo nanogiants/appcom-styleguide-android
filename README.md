@@ -2,23 +2,23 @@
 
 // TODO: Codebeispiele mit mehreren Sub-Beispielen sollten evtl. deutlicher getrennt werden (horizontale Linie o.ä.)
 
-This document describes the style guide applied to android projects for 
+This document describes the style guide applied to android projects for
 appcom interactive GmbH. It describes rules how to organize your
-project, packages and files, so that some best practises are held. 
-These best practises have developed over the last 5 years and are 
+project, packages and files, so that some best practises are held.
+These best practises have developed over the last 5 years and are
 brought to proof in many commercial products for well known clients.
 
-So use it in your favor if you want to and/or override the style guide 
+So use it in your favor if you want to and/or override the style guide
 in any way you want.
 
-This style guide is inspired by and loosely build on the 
+This style guide is inspired by and loosely build on the
 [Javascript style guide by Airbnb](https://github.com/airbnb/javascript).
 
 ## Tables of Contents {.unnumbered #table-of-contents}
 
   1. [Gradle](#gradle)
   1. [Artifacts](#artifacts)
-  1. [Libraries](#libraries) 
+  1. [Libraries](#libraries)
   1. [Modules](#modules)
   1. [Package structure](#package-structure)
   1. [Style](#style)
@@ -45,14 +45,14 @@ This style guide is inspired by and loosely build on the
 
     // bad
     classpath 'com.android.tools.build:gradle:2.+'
-   
+
   <a name="gradle--structure"></a><a name="1.2"></a>
-  - [1.2](#gradle--structure) Create one gradle file per module and one 
-  file for the project. The project gradle file holds global 
-  declarations used for the module gradle files. It is optional but 
-  encouraged to create helper gradle files to outsource commonly used 
+  - [1.2](#gradle--structure) Create one gradle file per module and one
+  file for the project. The project gradle file holds global
+  declarations used for the module gradle files. It is optional but
+  encouraged to create helper gradle files to outsource commonly used
   functions (such as customizing artifact file names).
-  
+
   <a name="gradle--global-declarations"></a><a name="1.3"></a>
   - [1.3](#gradle--global-declarations) Declare commonly used variables
   as global variables in the project gradle file. This concerns usually
@@ -63,33 +63,33 @@ This style guide is inspired by and loosely build on the
   * target sdk version (targetSdkVersion)
   * version code (versionCode)
   * version name (versionName)
-  
+
   Also you should declare versions of library clusters (e.g. retrofit,
   google libraries, rxjava) to make library invocations easier.
-  
+
   <a name="gradle--libaries"></a><a name="1.4"></a>
   - [1.4](#gradle--libaries) Declare your libraries globally in the
   project gradle file. This helps you to manage dependencies globally.
   You can reference imported libraries in an module gradle from the
   project gradle. Example
-  
+
     googleLibraryVersion = "25.0.1"
-    
+
     libs = [
         appcompat : ('com.android.support.appcompat-v7:' + googleLibraryVersion),
         supportv4 : ('com.android.support.support-v7:' + googleLibraryVersion)
     ]
-  
+
   <a name="gradle--tasks"></a><a name="1.5"></a>
-  - [1.5](#gradle--tasks) Declare your tasks globally in the project 
+  - [1.5](#gradle--tasks) Declare your tasks globally in the project
   gradle file. This helps you to use them in each module gradle file.
 
   <a name="gradle--versioning"></a><a name="1.6"></a>
-  - [1.6](#gradle--versioning) The android version code and the android 
-  version name should be created automatically. You should use git for 
-  that. The android version name matches the current git tag. The 
-  android version code matches the number of commits after the last git 
-  tag. The initial commit must be tagged with `0.0.0`. Each tag must 
+  - [1.6](#gradle--versioning) The android version code and the android
+  version name should be created automatically. You should use git for
+  that. The android version name matches the current git tag. The
+  android version code matches the number of commits after the last git
+  tag. The initial commit must be tagged with `0.0.0`. Each tag must
   conform the [SemVer](http://semver.org/) Specification.
 
   // TODO: Hier wäre ein Template o.ä. sinnvoll (Simon)
@@ -101,11 +101,11 @@ This style guide is inspired by and loosely build on the
   development, staging, produciton
 
   <a name="artifact--name"></a><a name="2.1"></a>
-  - [2.1](#artifact--name) The artifact should be named after 
+  - [2.1](#artifact--name) The artifact should be named after
   the following scheme:
-  
-    $COMPANYNAME$-$APPNAME$-$STAGE$-$VERSIONNAME$.$VERSIONCODE$.apk 
-    
+
+    $COMPANYNAME$-$APPNAME$-$STAGE$-$VERSIONNAME$.$VERSIONCODE$.apk
+
     // good
     appcom-swipe-production-0.0.2.127.apk
     appcom-swipe-develop-0.0.2.20.apk
@@ -113,15 +113,15 @@ This style guide is inspired by and loosely build on the
     // bad
     appcom-swipe.apk
     swipe-0.0.1.apk
-  
+
   Stages can be one of the following:
-  
+
   * develop (Development)
   * staging (Preproduction)
   * production (Production)
 
   // TODO: Hier wäre ein allgemeingültiges Dokument sinnvoll, welches diese Konventionen für alle Projekte und alle Plattformen definiert (Simon)
-  
+
 **[back to top](#table-of-contents)**
 
 ## Libraries {.unnumbered}
@@ -130,12 +130,12 @@ This style guide is inspired by and loosely build on the
   - [3.1](#libraries--version) Always use the latest version if possible.
   Make sure to migrate also major releases if possible.
   You should not use dynamic dependencies in version numbers. Using this feature can cause unexpected version updates and difficulty resolving version differences.
-  
+
   <a name="libraries--grouping"></a><a name="3.2"></a>
-  - [3.2](#libraries--grouping) Group library definitions in their 
-  respective cluster. Clustering should be done by components. Add a 
+  - [3.2](#libraries--grouping) Group library definitions in their
+  respective cluster. Clustering should be done by components. Add a
   newline after each declaration cluster. Available components are:
-  
+
   * Android
   * UI
   * Database
@@ -145,29 +145,29 @@ This style guide is inspired by and loosely build on the
   * Misc
 
   // TODO: (Simon) Was ist der Unterschied zwischen "Misc" und "Utilities"? Die Trennung scheint hier etwas schwammig, daher schlage ich eine Umbenennung von "Utilities" zu "Debug Tools" vor. In diese Kategorien würden alle Tools und Libraries fallen, welche nur für die Entwickler von Wert sind, z.B. Timber, Stetho, LeakCanary, etc. In die Kategorie "Misc" würden dann alle übrigen Libraries eingeordnet werden, die in keine der anderen Kategorien passen.
-  
+
   Example:
-  
+
     libs = [
         // Android
         appcompat   : ('com.android.support:appcompat-v7:' + supportLibraryVersion),
         supportv4   : ('com.android.support:support-v4:' + supportLibraryVersion),
-        
+
         // Misc               
         timber      : ('com.jakewharton.timber:timber:4.5.1')
     ]
-    
+
 **[back to top](#table-of-contents)**
 
 ## Modules {.unnumbered}
 
   <a name="modules--app"></a><a name="4.1"></a>
-  - [4.1](#modules--app) Use the `app` module as the primary module, 
-  which holds the android context objects (i.e. Application, Activities, 
+  - [4.1](#modules--app) Use the `app` module as the primary module,
+  which holds the android context objects (i.e. Application, Activities,
   Fragments, ...).
-   
+
   <a name="modules--model"></a><a name="4.2"></a>
-  - [4.2](#modules--model) Use the `model` module as the data layer for 
+  - [4.2](#modules--model) Use the `model` module as the data layer for
   your application. This module does not hold a reference to an android
   specific context or object.
 
@@ -178,13 +178,13 @@ This style guide is inspired by and loosely build on the
 ## Package Structure {.unnumbered}
 
   <a name="package-structure--app"></a><a name="5.1"></a>
-  - [5.1](#package-structure--app) Package structure is important since 
+  - [5.1](#package-structure--app) Package structure is important since
   it helps when navigating through the code and has a huge impact of the
-  overall maintainability of the project. Each package name should be 
-  used in its respective plural form, except for the `di` package. The 
-  package structure for the app structure is described in the following 
+  overall maintainability of the project. Each package name should be
+  used in its respective plural form, except for the `di` package. The
+  package structure for the app structure is described in the following
   table:
-  
+
   | Package | Description |
   |:-|:-------------------|
   | activities | Contains all the activities used in the project. |
@@ -197,10 +197,10 @@ This style guide is inspired by and loosely build on the
   | listeners | Contains listeners used in your app. These do not need to be cohesive. You can add listeners for animations, lists or ui events. |
   | utilities | Contains utility classes. |
   | views | Contains classes, which extend android views. |
-  
+
   Note that not each package is needed, since this highly depends on the
-  usecase, which needs to be implemented. Each class name should end 
-  with the respective package name (e.g. ScrollStateListener in the 
+  usecase, which needs to be implemented. Each class name should end
+  with the respective package name (e.g. ScrollStateListener in the
   listeners package), except for the `di` and `fragment` package.
 
   // TODO: Ist es vielleicht eine Überlegung wert, bei den Fragments und Presentern anstatt der Endung "Impl" evtl. besser das Interface durch eine Endung, z.B. "Interface", zu benennen, um die Namensgebung konsistenter zu gestalten? (Simon)
@@ -208,8 +208,8 @@ This style guide is inspired by and loosely build on the
   <a name="package-structure--model"></a><a name="5.2"></a>
   - [5.2](#package-structure--model) Each package name should be used in
   its respective plural form, except for the `di` package. The package
-  structure for the model structure is described in the following table: 
-  
+  structure for the model structure is described in the following table:
+
   | Package | Description |
   |:-|:-------------------|
   | datasources | Contains all the datasources relevant to the project. Can contain packages based on the datasource (i.e. web, database, memory) |
@@ -223,8 +223,8 @@ This style guide is inspired by and loosely build on the
   | utilities | Contains utility classes. |
 
    Note that not each package is needed, since this highly depends on the
-  usecase, which needs to be implemented. Each class name should end 
-  with the respective package name (e.g. ValueTransformer in the 
+  usecase, which needs to be implemented. Each class name should end
+  with the respective package name (e.g. ValueTransformer in the
   transformers package), except for the `di` package.
 
 **[back to top](#table-of-contents)**
@@ -239,8 +239,6 @@ This style guide is inspired by and loosely build on the
   <a name="style--line-length"></a><a name="6.2"></a>
   - [6.2](#style--line-length) Use a line length of 120 characters.
 
-  // TODO: Anleitung zum Einrichten bzw. Link darauf (Simon)
-
 **[back to top](#table-of-contents)**
 
 ## Comments {.unnumbered}
@@ -249,10 +247,10 @@ This style guide is inspired by and loosely build on the
   - [7.1](#comments--multiline) Use `/** ... */` for multi-line comments.
 
   // TODO: Evtl. als "Block Comments" bezeichnen? Afaik verwendet Android Studio per Default `/* ... */`, daher ggf. Anleitung. (Thomas)
-  
-    // good 
-  
-    /** 
+
+    // good
+
+    /**
      * This does something
      * @param tag The tag.
      */
@@ -261,34 +259,34 @@ This style guide is inspired by and loosely build on the
     }
 
     // bad
-  
+
     // this does something
     // @param tag The tag.
     private void doSomething(String tag) {
-      ... 
+      ...
     }
-  
+
   <a name="comments--singleline"></a><a name="7.2"></a>
-  - [7.2](#comments--singleline) Use `//` for single line comments. 
-  Place single line comments on a newline above the subject of the 
+  - [7.2](#comments--singleline) Use `//` for single line comments.
+  Place single line comments on a newline above the subject of the
   comment. Put an empty line before the comment unless it's on the first
   line of a block.
-  
+
     // good
     // is current tab
     int active = true;
 
     // bad
     int active = true;  // is current tab
-    
-    
+
+
     // good
     private int getType() {
         Log.d(TAG, "Fetching type...");
-        
+
         // set the default type to 'no type'
         int typeOut = this.type ? this.type : -1;
-        
+
         return typeOut;
     }
 
@@ -297,21 +295,21 @@ This style guide is inspired by and loosely build on the
         Log.d(TAG, "Fetching type...");
         // set the default type to 'no type'
         int typeOut = this.type ? this.type : -1;
-        
+
         return typeOut;
     }
-    
-    
+
+
     // also good
     private int getType() {
         // set the default type to 'no type'
         int typeOut = this.type ? this.type : -1;
-        
+
         return type;
     }
 
   <a name="comments--spaces"></a><a name="7.3"></a>
-  - [7.3](#comments--spaces) Start all comments with a space to make it easier to read. 
+  - [7.3](#comments--spaces) Start all comments with a space to make it easier to read.
 
     // good
     // is current tab
@@ -350,42 +348,38 @@ This style guide is inspired by and loosely build on the
 ## Strings {.unnumbered}
 
   <a name="strings--format"></a><a name="8.1"></a>
-  - [8.1](#strings--format) Use the `StringBuilder` to concatenate 
-  strings. Why: It is much faster than `String.format` and the 
+  - [8.1](#strings--format) Use the `StringBuilder` to concatenate
+  strings. Why: It is much faster than `String.format` and the
   `+`-Operator on Strings. Also most of the time the java compiler
   will convert String concatenation to `StringBuilder` calls.
 
-  // TODO: Ist es eine Erwähnung wert, innerhalb der append() Methode logischerweise auch keinen `+`-Operator zu nutzen, (würde intern
-  // neuen StringBuilder erzeugen) außer es werden lediglich Konstanten verkettet (dies kann der Compiler sogar optimieren)? (Thomas)
-  
     int value = 20;
 
     // good
     String value = StringBuilder().append(value).append(" melons").toString();
-    
+
     // bad
     String value = value + " melons";
-    
-    // also bad 
     String value = String.format("%d melons", value);
+    String value = StringBuilder().append(value + " melons").toString();
 
 
   // TODO: Vielleicht einheitlich Methode zum Erzeugen eines String aus Integer bzw. Float definieren. (Thomas)
-    
+
 **[back to top](#table-of-contents)**
 
 ## Classes & Contructors {.unnumbered}
 
   <a name="classes-constructors--constructor-variables"></a><a name="9.1"></a>
-  - [9.1](#classes-constructors--constructor-variables) Reference class 
-  inside a constructor always with `this`. Omit `this` outside the 
+  - [9.1](#classes-constructors--constructor-variables) Reference class
+  inside a constructor always with `this`. Omit `this` outside the
   constructor, except a parameter would shadow the class member.
-  
+
     // good
     class Klass {
-      
+
       private int value;  
-  
+
       public Klass() {
         this.value = 20;
       }
@@ -393,87 +387,86 @@ This style guide is inspired by and loosely build on the
 
     // bad
     class Klass {
-    
+
       private int value;
-    
+
       public Klass() {
         value = 20;
       }
     }
-    
-    
+
+
     // good
     class Klass {
-    
+
       private int value;
-      
-       ... 
-      
+
+       ...
+
       public int getValue() {
         return value;
       }
-    } 
-     
+    }
+
     // good
     class Klass {
-  
+
       private int value;
-      
-      ... 
-    
+
+      ...
+
       public void doSomething(int value) {
         this.value = value;
         ...
       }
     }
 
-    // bad 
+    // bad
     class Klass {
-    
+
       private int value;
-      
-      ... 
-      
+
+      ...
+
       public int getValue() {
         return this.value;
       }
     }  
-  
+
   <a name="classes-constructors--tostring"></a><a name="9.2"></a>
   - [9.2](#classes-constructors--tostring) Add always a toString method
   for entities and models. Why: You almost always have the need to log
-  the current state of a pojo. And that is when you release you get 
-  something like this `[Lcom.foo.Object;@28a418fc`. So keep yourself 
+  the current state of a pojo. And that is when you release you get
+  something like this `[Lcom.foo.Object;@28a418fc`. So keep yourself
   from this and create a `toString`-Method. Also todays IDEs can create
-  it automatically. 
-  // TODO: Tastenkombination einfügen für Android Studio (Simon)
-  
+  it automatically.
+
   <a name="classes-constructors--solid"></a><a name="9.3"></a>
-  - [9.3](#classes-constructors--solid) Classes should be as 
+  - [9.3](#classes-constructors--solid) Classes should be as
   [SOLID](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design))
-  as possbile. Although this is an architectural pattern it applies to 
-  classes in particular and should be mentioned as such. This means in 
+  as possbile. Although this is an architectural pattern it applies to
+  classes in particular and should be mentioned as such. This means in
   general:
 
   // TODO: Das ist eher ein Architektur-Thema und erscheint hier fehl am Platz (Simon)
-  
+
   * `S`ingle responsible principle
   * `O`pen/Closed principle
-  * `L`iskov substitution principle 
-  * `I`nterface segregation principle 
-  * `D`ependency inversion principle 
-  
+  * `L`iskov substitution principle
+  * `I`nterface segregation principle
+  * `D`ependency inversion principle
+
 **[back to top](#table-of-contents)**
 
 ## Naming Conventions {.unnumbered}
 
   <a name="naming--descriptive"></a><a name="10.1"></a>
-  - [10.1](#naming--descriptive) Avoid single letter names. Be 
-  descriptive with your naming. Imagine having only the variable name 
-  without the concrete type and context and try to infer the purpose 
+  - [10.1](#naming--descriptive) Avoid single letter names. Be
+  descriptive with your naming. Imagine having only the variable name
+  without the concrete type and context and try to infer the purpose
   of the variable. If the name of the variable gets you there the naming
   is good!
-  
+
     // good since it is verbose enough to tell you what the object references with the variable is supposed to do.
     TextView firstnameTextView = ...;
     int age = 12;
@@ -482,11 +475,11 @@ This style guide is inspired by and loosely build on the
     // bad
     int a = 10;
     int value = 20; // bad since, this does not tell the proper purpose of the variable
-  
+
   <a name="naming--camelcase"></a><a name="10.2"></a>
-  - [10.2](#naming--camelcase) Use camelCase when naming objects, 
+  - [10.2](#naming--camelcase) Use camelCase when naming objects,
   functions and instances.
-  
+
     // good
     int test = 0;
     String firstName = "Hans";
@@ -498,7 +491,7 @@ This style guide is inspired by and loosely build on the
   <a name="naming--pascalcase"></a><a name="10.3"></a>
   - [10.3](#naming--pascalcase) Use PascalCase only when naming classes,
   constructors and other java filenames.
-  
+
     // good
     class TestCase {
     }
@@ -506,9 +499,9 @@ This style guide is inspired by and loosely build on the
     // bad
     class testCase {
     }
-  
+
   <a name="naming--leading-underscore"></a><a name="10.4"></a>
-  - [10.4](#naming--leading-underscore) Do not use trailing or leading 
+  - [10.4](#naming--leading-underscore) Do not use trailing or leading
   underscores. This pattern is often used to indicated private methods
   or attributes. However Java itself has a fully fledged data access
   concept including private date. Use this instead of naming conentions.
@@ -535,135 +528,135 @@ This style guide is inspired by and loosely build on the
   <a name="naming--acronyms-and-initialisms"></a><a name="10.5"></a>
   - [10.5](#naming--acronyms-and-initialisms) Acronyms and initialisms
   should always be all capitalized, or all lowercased.
-  
+
   > Why? Names are for readability, not to appease a computer algorithm.
-  
+
     // good
     class SMSContainer {
     }
-    
-    // good 
+
+    // good
     class HTTPRequest {
     }
 
-    // bad 
+    // bad
     class SmsContainer {
     }
-    
-    // bad 
+
+    // bad
     class HttpRequest {
     }
-  
+
   <a name="naming--listener-interafaces"></a><a name="10.6"></a>
-  - [10.6](#naming--listener-interafaces) Interfaces for listeners 
-  should be written in present tense, should start with `On` and end 
-  with `Listener`. Every method within this interface should be written 
+  - [10.6](#naming--listener-interafaces) Interfaces for listeners
+  should be written in present tense, should start with `On` and end
+  with `Listener`. Every method within this interface should be written
   in past tense and should start with `on`.
-   
-    // good 
+
+    // good
     public interface OnClickListener { ... }
     public interface OnScollListener { ... }
 
     // bad
     public interface ClickListener { ... }
     public interface OnScrolledListener { ... }
-    
-    
-    // good 
+
+
+    // good
     public interface OnClickListener {
         void onClicked(...) { ... }
     }
 
-    // bad 
+    // bad
     public interface OnClickListener {
         void onClick(...) { ... }
     }
-  
+
 **[back to top](#table-of-contents)**
-  
+
 ## Asset naming conventions {.unnumbered}  
-  
+
   <a name="naming--layouts"></a><a name="11.1"></a>
   - [11.1](#naming--layouts) Use snake_case for ids within layout files.
   The id should be named after the following pattern:
-  
+
     <WHERE>_<DESCRIPTION>_<WHAT>
-    
+
     // example
     <TextView
         android:id="@+id/login_email_textview"
         ...
     />
-  
-  The `WHERE` describes in which part of the app the layout is used. The 
-  `DESCRIPTION` should tell the reader what the actual purpose of the 
+
+  The `WHERE` describes in which part of the app the layout is used. The
+  `DESCRIPTION` should tell the reader what the actual purpose of the
   widget is. `WHAT` tells the reader what the widget is and corresponds
   to a widget type (e.g. TextView, Button).
-  
-  When binding a java object to the widget defined in the layout name 
-  the java object after the widget but camelCased. 
-  
+
+  When binding a java object to the widget defined in the layout name
+  the java object after the widget but camelCased.
+
     TextView loginEmailTextView = ...;
 
   <a name="naming--drawable-filenames"></a><a name="11.2"></a>
-  - [11.2](#naming--drawable-filenames) Drawable filenames should be 
+  - [11.2](#naming--drawable-filenames) Drawable filenames should be
   named after the following pattern:
-  
+
     <WHAT>_<WHERE>_<DESCRIPTION>[_<SIZE>][_STATE]
-    
+
     // example
     login_background
     login_button_small
-    
-  The `WHAT` denodes the type of the drawable. It can be one of the 
+
+  The `WHAT` denodes the type of the drawable. It can be one of the
   following:
-  
+
   * ic (Icons)
   * bg (Backgrounds)
   * shape (Shapes)
-  
-  The `WHERE` describes in which part of the app the drawable is used. 
-  If the drawable is used in more than one screen use `all`. The 
-  `DESCRIPTION` should tell the reader what the actual purpose of the 
+
+  The `WHERE` describes in which part of the app the drawable is used.
+  If the drawable is used in more than one screen use `all`. The
+  `DESCRIPTION` should tell the reader what the actual purpose of the
   drawable is. The `SIZE` part is optional and describes the size of the
-  drawable. This can either be a measurable (e.g. 24dp) or a generic 
-  term (e.g. small). `STATE` indicates optionally the state of the 
+  drawable. This can either be a measurable (e.g. 24dp) or a generic
+  term (e.g. small). `STATE` indicates optionally the state of the
   drawable. It can be one of the following:
-  
+
   * normal (can be omitted)
   * disabled
   * selected
   * pressed
-  
-  
+
+
   <a name="naming--strings"></a><a name="11.3"></a>
   - [11.3](#naming--strings) Strings should be named after the following
   pattern:
-  
+
     <WHERE>_<DESCRIPTION>
-    
+
     // example
     all_cancel
     login_firstname
-    
-  The `WHERE`describes in which part of the app the string is used. If 
+
+  The `WHERE`describes in which part of the app the string is used. If
   it is used in more than one screen use `all`. The `DESCRIPTION` should
   tell the reader what the actual purpose of the string is.
-    
+
   <a name="naming--dimens"></a><a name="11.4"></a>
-  - [11.4](#naming--dimens) Dimensions should be named after the 
+  - [11.4](#naming--dimens) Dimensions should be named after the
     following pattern:
-    
+
       <WHAT>_<DESCRIPTION>[_<SIZE>]
-      
+
       // example
       height_toolbar
       height_textsize_medium
       margin_profileimage_16dp
-      
-  The `WHAT` indicates the type and thus the purpose of the dimens. It 
+
+  The `WHAT` indicates the type and thus the purpose of the dimens. It
   can be one of the following:
-  
+
   * width (in dp)
   * height (in dp)
   * size (width == height, in dp)
@@ -672,27 +665,27 @@ This style guide is inspired by and loosely build on the
   * padding (in dp)
   * elevation (in dp)
 
-  Note that there are many other types, which can be used. The 
-  `DESCRIPTION` should tell the reader what the actual purpose of the 
+  Note that there are many other types, which can be used. The
+  `DESCRIPTION` should tell the reader what the actual purpose of the
   dimens is. The `SIZE` part is optional and describes the size of the
-  drawable. This can either be a measurable (e.g. 24dp) or a generic 
+  drawable. This can either be a measurable (e.g. 24dp) or a generic
   term (e.g. small).
-  
+
   <a name="naming--integers"></a><a name="11.5"></a>
   - [11.5](#naming--integers) Integers should be named after the following
   pattern:
-  
+
     <WHERE>_<DESCRIPTION>
-    
+
     // example
     all_animation_duration
     login_number_of_successful_tries
-  
-  The `WHERE`describes in which part of the app the integer is used. If 
+
+  The `WHERE`describes in which part of the app the integer is used. If
   it is used in more than one screen use `all`. The `DESCRIPTION` should
   tell the reader what the actual purpose of the integer is.
-  
-  
+
+
 **[back to top](#table-of-contents)**
 
 ## Logging {.unnumbered}
@@ -701,10 +694,10 @@ This style guide is inspired by and loosely build on the
 
   <a name="logging--loglevels"></a><a name="12.1"></a>
   - [12.1](#logging--loglevels) Android provides a various amount of log
-  levels each with its own purpose. Along with android studio you have 
-  the tool for filtering the logcat by exactly this levels. Here is a 
+  levels each with its own purpose. Along with android studio you have
+  the tool for filtering the logcat by exactly this levels. Here is a
   list of common log levels and their meaning
-  
+
   | Level | Meaning |
   |:-|:-------------|
   | DEBUG | To log about anything happen in the app. Is mostly used during debugging. Should be revisited before entering into production mode. |
@@ -714,55 +707,55 @@ This style guide is inspired by and loosely build on the
   | WARN | Log all events, which could potentially become an error. |
 
   <a name="logging--messages"></a><a name="12.2"></a>
-  - [12.2](#logging--messages) Write meaningful log messages. This 
-  sounds easy but is in fact really hard. Keep in mind, that you 
+  - [12.2](#logging--messages) Write meaningful log messages. This
+  sounds easy but is in fact really hard. Keep in mind, that you
   sometimes log for the event of an error, which in reality occurs only
   rarely. But if it does, you depend on a clear log message along with
-  an expressive payload. A good log message should consist of the 
+  an expressive payload. A good log message should consist of the
   following items:
-  
+
   * The filename and linenumber of the log statement (optionally the methodname to make it easier to categorize the log purely from reading)
   * A meaningful log message
   * An expressive payload, usually a Java object (That's why you should always add a toString Method - see [here](#classes-constructors--tostring)
-  
+
   <a name="logging--message-language"></a><a name="12.3"></a>
-  - [12.3](#logging--message-language) Write your log messages in 
+  - [12.3](#logging--message-language) Write your log messages in
   english. English is a well known language both in terms of writing and
   reading. Furthermore does it not contain any special characters, which
   means the it can be logged with ASCII. This is especially important
-  when performing log rotation, since you do not know where your logs 
+  when performing log rotation, since you do not know where your logs
   are stored.
 
   <a name="logging--payload"></a><a name="12.4"></a>
-  - [12.4](#logging--payload) Always log with payload (i.e. context). 
+  - [12.4](#logging--payload) Always log with payload (i.e. context).
   The log message often is not sufficient when tracing bugs. You almost
-  always need additional information. So just log them along with the 
+  always need additional information. So just log them along with the
   message and you keep yourself from deploying a new version of the app
-  just to improve log messages. 
-  
-  Make sure that the payload is well formatted and complete. The format 
+  just to improve log messages.
+
+  Make sure that the payload is well formatted and complete. The format
   helps you to filter and/or search for certain events.
-  
+
     // good
     Transaction failed: { id: 63287, checksum: null }
 
     // bad
     Transaction failed!
-    
+
     // bad. Payload included but hard to read/parse
     Transaction '63287' failed: Checksum 'null' is invalid!
 
 ## Live templates {.unnumbered}
 
-The following is a list of live templates, which can be found 
-[here](livetemplates). Theses are grouped by certain topics. Each group 
-has several live templates, which are described in the following. We 
+The following is a list of live templates, which can be found
+[here](livetemplates). Theses are grouped by certain topics. Each group
+has several live templates, which are described in the following. We
 list the shortcut and a preview of the code, which will be generated. If
 necessary the code will be explained in comments. We will use variables
-the same way Android Studio (and IntelliJ in general) does. 
+the same way Android Studio (and IntelliJ in general) does.
 
-For those who are not familiar with this should check it out 
-[here](https://www.jetbrains.com/help/idea/2016.3/live-templates.html). 
+For those who are not familiar with this should check it out
+[here](https://www.jetbrains.com/help/idea/2016.3/live-templates.html).
 
 ### Android {.unnumbered}
 
@@ -774,43 +767,43 @@ For those who are not familiar with this should check it out
             $END$
         }
     });
-    ``` 
+    ```
 
 * gone
 
     ```
     $VIEW$.setVisibility(View.GONE);
     ```
-    
+
 * visible
 
     ```
     $VIEW$.setVisibility(View.VISIBLE);
-    ``` 
+    ```
 
 * govi
 
     ```
     $VIEW$.setVisibility($CONDITION$ ? View.GONE : View.VISIBLE);
     ```
-    
+
 * vigo
-    
+
     ```
     $VIEW$.setVisibility($CONDITION$ ? View.VISIBILE : View.GONE);
     ```
 
 ### ButterKnife {.unnumbered}
 
-* bind 
+* bind
 
     ```
     @Bind(R.id.$VIEW_ID$) $TYPE$ $VIEW_ID_CAMELCASED$;
     ```
-    
+
 where as `$VIEW_ID_CAMELCASED$` is the camelcased value of `$VIEW_ID$`.
 
-* binv 
+* binv
 
     ```
     @BindView(R.id.$VIEW_ID$) $TYPE$ $VIEW_ID_CAMELCASED$;
@@ -818,7 +811,7 @@ where as `$VIEW_ID_CAMELCASED$` is the camelcased value of `$VIEW_ID$`.
 
 where as `$VIEW_ID_CAMELCASED$` is the camelcased value of `$VIEW_ID$`.
 
-* binddrawable 
+* binddrawable
 
     ```
     @BindDrawable(R.drawable.$DRAWABLE_ID$) Drawable $DRAWABLE_ID_CAMELCASED$Drawable;
@@ -831,7 +824,7 @@ where as `$DRAWABLE_ID_CAMELCASED$` is the camelcased value of `$DRAWABLE_ID$`.
     ```
     @BindColor(R.color.$COLOR_ID$) int $COLOR_ID_CAMELCASED$Color;
     ```
-    
+
 where as `$COLOR_ID_CAMELCASED$` is the camelcased value of `$COLOR_ID$`;
 
 * bindstring
@@ -839,8 +832,8 @@ where as `$COLOR_ID_CAMELCASED$` is the camelcased value of `$COLOR_ID$`;
     ```
     @BindString(R.color.$String_ID$) String $String_ID_CAMELCASED$String;
     ```
-    
-where as `$STRING_ID_CAMELCASED$` is the camelcased value of `$STRING_ID$`; 
+
+where as `$STRING_ID_CAMELCASED$` is the camelcased value of `$STRING_ID$`;
 
 * onclick
 
@@ -849,7 +842,7 @@ where as `$STRING_ID_CAMELCASED$` is the camelcased value of `$STRING_ID$`;
         $END$
     }
     ```
-    
+
 where as $VIEW_ID_CAPITALIZED$ is the capitalized value of $VIEW_ID$.
 
 * onlongclick
@@ -859,10 +852,10 @@ where as $VIEW_ID_CAPITALIZED$ is the capitalized value of $VIEW_ID$.
         $END$
     }
     ```
-    
+
 where as $VIEW_ID_CAPITALIZED$ is the capitalized value of $VIEW_ID$.
 
-* ontouch 
+* ontouch
 
     ```
     @OnTouch(R.id.$VIEW_ID$) public boolean on$VIEW_ID_CAPITALIZED$Touched() {
@@ -872,14 +865,14 @@ where as $VIEW_ID_CAPITALIZED$ is the capitalized value of $VIEW_ID$.
 
 where as $VIEW_ID_CAPITALIZED$ is the capitalized value of $VIEW_ID$.
 
-* onitemselected 
+* onitemselected
 
     ```
     @OnItemSelected(R.id.$VIEW_ID$) public boolean on$VIEW_ID_CAPITALIZED$Selected(int position) {
         $END$
     }
     ```
-    
+
 where as $VIEW_ID_CAPITALIZED$ is the capitalized value of $VIEW_ID$.
 
 ### Dagger 2 {.unnumbered}
@@ -888,7 +881,7 @@ where as $VIEW_ID_CAPITALIZED$ is the capitalized value of $VIEW_ID$.
 
     ```
     @Inject $END$
-    ``` 
+    ```
 
 * injc
 
@@ -896,48 +889,48 @@ where as $VIEW_ID_CAPITALIZED$ is the capitalized value of $VIEW_ID$.
     @Inject public $CLASS$() {
         $END$
     }
-    ``` 
+    ```
 
 * pro
 
     ```
     @Provides $END$
     ```
-    
+
 * sing
 
     ```
     @Singleton $END$
     ```
-    
+
 * ppa
- 
+
     ```
     @Provides @PerActivity public $CLASS$ provide$CLASS$($CLASS$Impl $CLASS_COPY$Impl) {
-        return $CLASS_COPY$Impl; 
+        return $CLASS_COPY$Impl;
     }
     ```
-    
+
 where as `$CLASS_COPY$` is the decapitalized value of `$CLASS$`.   
- 
+
 * ppf
-  
+
     ```
     @Provides @PerFragment public $CLASS$ provide$CLASS$($CLASS$Impl $CLASS_COPY$Impl) {
-        return $CLASS_COPY$Impl; 
+        return $CLASS_COPY$Impl;
     }
     ```
-     
+
 where as `$CLASS_COPY$` is the decapitalized value of `$CLASS$`.   
 
 * pps
-  
+
     ```
     @Provides @Singleton public $CLASS$ provide$CLASS$($CLASS$Impl $CLASS_COPY$Impl) {
-        return $CLASS_COPY$Impl; 
+        return $CLASS_COPY$Impl;
     }
     ```
-     
+
 where as `$CLASS_COPY$` is the decapitalized value of `$CLASS$`.   
 
 ### RxJava 2 {.unnumbered}
@@ -946,10 +939,10 @@ where as `$CLASS_COPY$` is the decapitalized value of `$CLASS$`.
 
     ```
     Single.create(subscriber -> {
-        $END$ 
+        $END$
     });
     ```
-    
+
 * rxcompletable
 
     ```
@@ -957,15 +950,15 @@ where as `$CLASS_COPY$` is the decapitalized value of `$CLASS$`.
         $END$
     });
     ```
-    
+
 * rxobservable
 
     ```
     Observable.create(subscriber -> {
         $END$
     });
-    
-* rxflowable 
+
+* rxflowable
 
     ```
     Flowable.create(subscriber -> {
@@ -978,25 +971,25 @@ where as `$CLASS_COPY$` is the decapitalized value of `$CLASS$`.
     ```
     subscriber.onSuccess($END$);
     ```
-    
+
 * rxerror
 
     ```
     subscriber.onError($END$);
     ```
-    
+
 * rxcompleted
-    
+
     ```
     subscriber.onCompleted();
     ```
 
 * rxnext
-    
+
     ```
     subscriber.onNext($NED$);
     ```
-    
+
 ### Timber {.unnumbered}
 
 * timd
@@ -1007,7 +1000,7 @@ where as `$CLASS_COPY$` is the decapitalized value of `$CLASS$`.
 
 ## Roadmap {.unnumbered}
 
-This section describes items, which will be added to this style guide in 
+This section describes items, which will be added to this style guide in
 the future. These items are categorized in two sections namely
 `next` for items added in the next release and `future` for items added
 in future releases without a fixed date.
@@ -1016,7 +1009,7 @@ in future releases without a fixed date.
 
 * Naming conventions for <strike>strings, dimens, integers</strike>, styles, themes
 * Conventions for View Injection using Butterknife
-* <strike>Conventions for Logging</strike> 
+* <strike>Conventions for Logging</strike>
 * <strike>Naming conventions for Listener-Interfaces and corresponding methods</strike>
 * Naming and Grouping conventions for adapters and their view holders
 * Grouping conventions for tightly/loosely bounded interfaces
