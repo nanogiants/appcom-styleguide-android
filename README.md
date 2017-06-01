@@ -1,7 +1,5 @@
 # Appcom Android Style Guide {.unnumbered}
 
-// TODO: Codebeispiele mit mehreren Sub-Beispielen sollten evtl. deutlicher getrennt werden (horizontale Linie o.ä.)
-
 This document describes the style guide applied to android projects for
 appcom interactive GmbH. It describes rules how to organize your
 project, packages and files, so that some best practises are held.
@@ -36,9 +34,7 @@ This style guide is inspired by and loosely build on the
 ## Gradle {.unnumbered}
 
   <a name="gradle--version"></a><a name="1.1"></a>
-  - [1.1](#gradle--version) The android gradle plugin should use at least version 2.3.1 to support Instant run. You should not use dynamic dependencies in version numbers. Using this feature can cause unexpected version updates and difficulty resolving version differences.
-
-  // TODO: Neben Instant Run spricht auch dafür das seit 2.2 kein apt bzw. android-apt plugin mehr notwendig ist -> integrierter annotationProcessor (Thomas)
+  - [1.1](#gradle--version) The android gradle plugin should use at least version 2.3.1 to support Instant run and the build-in annotationProcessor. You should not use dynamic dependencies in version numbers. Using this feature can cause unexpected version updates and difficulty resolving version differences.
 
     // good
     classpath 'com.android.tools.build:gradle:2.3.1'
@@ -92,7 +88,7 @@ This style guide is inspired by and loosely build on the
   tag. The initial commit must be tagged with `0.0.0`. Each tag must
   conform the [SemVer](http://semver.org/) Specification.
 
-  // TODO: Hier wäre ein Template o.ä. sinnvoll (Simon)
+  // TODO: Verweis auf ein Template o.ä. (SubModule)
 
 **[back to top](#table-of-contents)**
 
@@ -120,7 +116,7 @@ This style guide is inspired by and loosely build on the
   * staging (Preproduction)
   * production (Production)
 
-  // TODO: Hier wäre ein allgemeingültiges Dokument sinnvoll, welches diese Konventionen für alle Projekte und alle Plattformen definiert (Simon)
+  // TODO: Auslagern / übernehmen in ein projektübergreifendes Dokument
 
 **[back to top](#table-of-contents)**
 
@@ -363,9 +359,6 @@ This style guide is inspired by and loosely build on the
     String value = String.format("%d melons", value);
     String value = StringBuilder().append(value + " melons").toString();
 
-
-  // TODO: Vielleicht einheitlich Methode zum Erzeugen eines String aus Integer bzw. Float definieren. (Thomas)
-
 **[back to top](#table-of-contents)**
 
 ## Classes & Contructors {.unnumbered}
@@ -448,7 +441,7 @@ This style guide is inspired by and loosely build on the
   classes in particular and should be mentioned as such. This means in
   general:
 
-  // TODO: Das ist eher ein Architektur-Thema und erscheint hier fehl am Platz (Simon)
+  // TODO: Auslagern in ein allgemeingültiges Dokument in den Bereich "Architektur" (Simon)
 
   * `S`ingle responsible principle
   * `O`pen/Closed principle
