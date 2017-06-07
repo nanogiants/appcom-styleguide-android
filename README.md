@@ -12,6 +12,8 @@ in any way you want.
 This style guide is inspired by and loosely build on the
 [Javascript style guide by Airbnb](https://github.com/airbnb/javascript).
 
+// TODO: Hinweis auf das allgemeinere Dokument "Appcom General Code Style Guide", dessen Inhalt durch dieses Dokument erweitert wird
+
 ## Tables of Contents {.unnumbered #table-of-contents}
 
   1. [Gradle](#gradle)
@@ -92,8 +94,6 @@ This style guide is inspired by and loosely build on the
 
 ## Artifacts {.unnumbered}
 
-  development, staging, production
-
   <a name="artifact--name"></a><a name="2.1"></a>
   - [2.1](#artifact--name) The artifact should be named after
   the following scheme:
@@ -114,7 +114,7 @@ This style guide is inspired by and loosely build on the
   * staging (Preproduction)
   * production (Production)
 
-  // TODO: Auslagern / übernehmen in ein projektübergreifendes Dokument
+  // TODO: Verweis auf das allgemeine Dokument, welches die Informationen zu den Stages ebenfalls enthält. Hier dann gff. entfernen
 
 **[back to top](#table-of-contents)**
 
@@ -429,21 +429,6 @@ This style guide is inspired by and loosely build on the
   something like this `[Lcom.foo.Object;@28a418fc`. So keep yourself
   from this and create a `toString`-Method. Also todays IDEs can create
   it automatically.
-
-  <a name="classes-constructors--solid"></a><a name="9.3"></a>
-  - [9.3](#classes-constructors--solid) Classes should be as
-  [SOLID](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design))
-  as possbile. Although this is an architectural pattern it applies to
-  classes in particular and should be mentioned as such. This means in
-  general:
-
-  // TODO: Auslagern in ein allgemeingültiges Dokument in den Bereich "Architektur" (Simon)
-
-  * `S`ingle responsible principle
-  * `O`pen/Closed principle
-  * `L`iskov substitution principle
-  * `I`nterface segregation principle
-  * `D`ependency inversion principle
 
 **[back to top](#table-of-contents)**
 
@@ -1001,7 +986,7 @@ in future releases without a fixed date.
 * Naming and Grouping conventions for adapters and their view holders
 * Grouping conventions for tightly/loosely bounded interfaces
 * Usage of ORMs in favor of native SQLite Classes
-* Describe Twine support for cross plattform string sharing
+* Describe Twine support for cross platform string sharing
 
 ### Future {.unnumbered}
 
