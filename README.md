@@ -88,13 +88,11 @@ This style guide is inspired by and loosely build on the
   tag. The initial commit must be tagged with `0.0.0`. Each tag must
   conform the [SemVer](http://semver.org/) Specification.
 
-  // TODO: Verweis auf ein Template o.ä. (SubModule)
-
 **[back to top](#table-of-contents)**
 
 ## Artifacts {.unnumbered}
 
-  development, staging, produciton
+  development, staging, production
 
   <a name="artifact--name"></a><a name="2.1"></a>
   - [2.1](#artifact--name) The artifact should be named after
@@ -240,9 +238,7 @@ This style guide is inspired by and loosely build on the
 ## Comments {.unnumbered}
 
   <a name="comments--multiline"></a><a name="7.1"></a>
-  - [7.1](#comments--multiline) Use `/** ... */` for multi-line comments.
-
-  // TODO: Evtl. als "Block Comments" bezeichnen? Afaik verwendet Android Studio per Default `/* ... */`, daher ggf. Anleitung. (Thomas)
+  - [7.1](#comments--multiline) Use `/** ... */` for block comments.
 
     // good
 
@@ -682,8 +678,6 @@ This style guide is inspired by and loosely build on the
 **[back to top](#table-of-contents)**
 
 ## Logging {.unnumbered}
-
-// TODO: Hier erscheinen weitere Beispiele und best practises sehr hilfreich und sollten ergänzt werden (Simon)
 
   <a name="logging--loglevels"></a><a name="12.1"></a>
   - [12.1](#logging--loglevels) Android provides a various amount of log
