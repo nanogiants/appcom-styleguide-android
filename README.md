@@ -4,15 +4,13 @@ This document describes the style guide applied to android projects for
 appcom interactive GmbH. It describes rules how to organize your
 project, packages and files, so that some best practises are held.
 These best practises have developed over the last 5 years and are
-brought to proof in many commercial products for well known clients.
+brought to proof in many commercial products for well known clients. It is based on the [Appcom General Code Style Guide](TODO: Link to repo / documentation) which should be known to understand all parts of this guide.
 
 So use it in your favor if you want to and/or override the style guide
 in any way you want.
 
 This style guide is inspired by and loosely build on the
 [Javascript style guide by Airbnb](https://github.com/airbnb/javascript).
-
-// TODO: Hinweis auf das allgemeinere Dokument "Appcom General Code Style Guide", dessen Inhalt durch dieses Dokument erweitert wird
 
 ## Tables of Contents {.unnumbered #table-of-contents}
 
@@ -108,14 +106,6 @@ This style guide is inspired by and loosely build on the
     appcom-swipe.apk
     swipe-0.0.1.apk
 
-  Stages can be one of the following:
-
-  * develop (Development)
-  * staging (Preproduction)
-  * production (Production)
-
-  // TODO: Verweis auf das allgemeine Dokument, welches die Informationen zu den Stages ebenfalls enthält. Hier dann gff. entfernen
-
 **[back to top](#table-of-contents)**
 
 ## Libraries {.unnumbered}
@@ -135,10 +125,8 @@ This style guide is inspired by and loosely build on the
   * Database
   * Network
   * Depdency Injection
-  * Utilities
+  * Debug Tools
   * Misc
-
-  // TODO: (Simon) Was ist der Unterschied zwischen "Misc" und "Utilities"? Die Trennung scheint hier etwas schwammig, daher schlage ich eine Umbenennung von "Utilities" zu "Debug Tools" vor. In diese Kategorien würden alle Tools und Libraries fallen, welche nur für die Entwickler von Wert sind, z.B. Timber, Stetho, LeakCanary, etc. In die Kategorie "Misc" würden dann alle übrigen Libraries eingeordnet werden, die in keine der anderen Kategorien passen.
 
   Example:
 
@@ -147,7 +135,7 @@ This style guide is inspired by and loosely build on the
         appcompat   : ('com.android.support:appcompat-v7:' + supportLibraryVersion),
         supportv4   : ('com.android.support:support-v4:' + supportLibraryVersion),
 
-        // Misc               
+        // Debug Tools               
         timber      : ('com.jakewharton.timber:timber:4.5.1')
     ]
 
@@ -196,8 +184,6 @@ This style guide is inspired by and loosely build on the
   usecase, which needs to be implemented. Each class name should end
   with the respective package name (e.g. ScrollStateListener in the
   listeners package), except for the `di` and `fragment` package.
-
-  // TODO: Ist es vielleicht eine Überlegung wert, bei den Fragments und Presentern anstatt der Endung "Impl" evtl. besser das Interface durch eine Endung, z.B. "Interface", zu benennen, um die Namensgebung konsistenter zu gestalten? (Simon)
 
   <a name="package-structure--model"></a><a name="5.2"></a>
   - [5.2](#package-structure--model) Each package name should be used in
