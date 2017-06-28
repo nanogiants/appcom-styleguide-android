@@ -973,6 +973,7 @@ in future releases without a fixed date.
 * Grouping conventions for tightly/loosely bounded interfaces
 * Usage of ORMs in favor of native SQLite Classes
 * Describe Twine support for cross platform string sharing
+* Useful links
 
 ### Future {.unnumbered}
 
