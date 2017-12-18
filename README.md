@@ -157,8 +157,6 @@ Fragments, ...).
 your application. This module does not hold a reference to an android
 specific context or object.
 
-<!-- // TODO: Wie sieht es hier aus mit z.B. Asset-Datasources? Diese benötigen ja doch einen Android-Context (Simon) -->
-
 **[back to top](#table-of-contents)**
 
 ## Package Structure
