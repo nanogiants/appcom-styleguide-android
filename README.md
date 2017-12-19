@@ -168,6 +168,7 @@ overall maintainability of the project. Each package name should be
 used in its respective plural form, except for the `di` package. The
 package structure for the app structure is described in the following
 table:
+
 | Package | Description |
 |:-|:-|
 | activities | Contains all the activities used in the project. |
@@ -470,6 +471,7 @@ String first_name = "Hans";
 <a name="naming--pascalcase"></a><a name="10.3"></a>
 - [10.3](#naming--pascalcase) Use PascalCase only when naming classes,
 constructors and other java filenames.
+
 ```
 // good
 class TestCase {
