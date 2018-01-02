@@ -69,9 +69,10 @@ gradle file. This helps you to use them in each module gradle file.
 - [1.5](#gradle--versioning) The android version code and the android
 version name should be created automatically. You should use git for
 that. The android version name matches the current git tag. The
-android version code matches the number of commits after the last git
-tag. The initial commit must be tagged with `0.0.0`. Each tag must
-conform the [SemVer](http://semver.org/) Specification.
+android version code matches the number of commits. The initial commit must be tagged with `0.0.0`. Each tag must
+conform the [SemVer](http://semver.org/) Specification. 
+Use our [Android Versioning Plugin](https://github.com/appcom-interactive/android-versioning) to automatically generate 
+the version name and version code from git.
 
 **[back to top](#table-of-contents)**
 
