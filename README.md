@@ -61,30 +61,12 @@ as global variables in the project gradle file. This concerns usually
 * version code (versionCode)
 * version name (versionName)
 
-Also you should declare versions of library clusters (e.g. retrofit,
-google libraries, rxjava) to make library invocations easier.
-
-<a name="gradle--libaries"></a><a name="1.4"></a>
-- [1.4](#gradle--libaries) Declare your libraries globally in the
-project gradle file. This helps you to manage dependencies globally.
-You can reference imported libraries in an module gradle from the
-project gradle. Example
-
-```
-googleLibraryVersion = "25.0.1"
-
-libs = [
-    appcompat : ('com.android.support.appcompat-v7:' + googleLibraryVersion),
-    supportv4 : ('com.android.support.support-v7:' + googleLibraryVersion)
-]
-```
-
-<a name="gradle--tasks"></a><a name="1.5"></a>
-- [1.5](#gradle--tasks) Declare your tasks globally in the project
+<a name="gradle--tasks"></a><a name="1.4"></a>
+- [1.4](#gradle--tasks) Declare your tasks globally in the project
 gradle file. This helps you to use them in each module gradle file.
 
-<a name="gradle--versioning"></a><a name="1.6"></a>
-- [1.6](#gradle--versioning) The android version code and the android
+<a name="gradle--versioning"></a><a name="1.5"></a>
+- [1.5](#gradle--versioning) The android version code and the android
 version name should be created automatically. You should use git for
 that. The android version name matches the current git tag. The
 android version code matches the number of commits after the last git
@@ -118,7 +100,8 @@ swipe-0.0.1.apk
 <a name="libraries--version"></a><a name="3.1"></a>
 - [3.1](#libraries--version) Always use the latest version if possible.
 Make sure to migrate also major releases if possible.
-You should not use dynamic dependencies in version numbers. Using this feature can cause unexpected version updates and difficulty resolving version differences.
+You should not use dynamic dependencies in version numbers. Using this feature can cause unexpected version updates and 
+difficulty resolving version differences.
 
 <a name="libraries--grouping"></a><a name="3.2"></a>
 - [3.2](#libraries--grouping) Group library definitions in their
@@ -142,6 +125,19 @@ libs = [
     
     // Debug Tools
     timber : ('com.jakewharton.timber:timber:4.5.1')
+]
+```
+
+<a name="libraries--version-grouping"></a><a name="3.3"></a>
+- [3.3](#libraries--version-grouping) You should declare versions of library clusters (e.g. retrofit, google libraries, 
+rxjava) to make library invocations easier.
+
+```
+googleLibraryVersion = "25.0.1"
+
+libs = [
+    appcompat : ('com.android.support.appcompat-v7:' + googleLibraryVersion),
+    supportv4 : ('com.android.support.support-v7:' + googleLibraryVersion)
 ]
 ```
 
