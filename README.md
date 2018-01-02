@@ -31,14 +31,16 @@ in any way you want.
 ## Gradle 
 
 <a name="gradle--version"></a><a name="1.1"></a>
-- [1.1](#gradle--version) The android gradle plugin should use at least version 2.3.1 to support Instant run and the build-in annotationProcessor. You should not use dynamic dependencies in version numbers. Using this feature can cause unexpected version updates and difficulty resolving version differences.
+- [1.1](#gradle--version) The android gradle plugin should use the [most recent version possible](https://developer.android.com/studio/releases/gradle-plugin.html). 
+Use at least version 2.3.1 to support Instant run and the build-in annotationProcessor. 
+You should not use dynamic dependencies in version numbers. Using this feature can cause unexpected version updates and difficulty resolving version differences.
 
 ```
 // good
-classpath 'com.android.tools.build:gradle:2.3.1'
+classpath 'com.android.tools.build:gradle:3.0.1'
 
 // bad
-classpath 'com.android.tools.build:gradle:2.+'
+classpath 'com.android.tools.build:gradle:3.+'
 ```
 
 <a name="gradle--structure"></a><a name="1.2"></a>
@@ -46,7 +48,7 @@ classpath 'com.android.tools.build:gradle:2.+'
 file for the project. The project gradle file holds global
 declarations used for the module gradle files. It is optional but
 encouraged to create helper gradle files to outsource commonly used
-functions (such as customizing artifact file names).
+functions.
 
 <a name="gradle--global-declarations"></a><a name="1.3"></a>
 - [1.3](#gradle--global-declarations) Declare commonly used variables
