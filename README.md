@@ -83,16 +83,20 @@ the version name and version code from git.
 the following scheme:
 
 ```
-$COMPANYNAME$-$APPNAME$-$STAGE$-$VERSIONNAME$.$VERSIONCODE$.apk
+$COMPANYNAME$-$APPNAME$-$STAGE$-$VERSIONNAME$.$VERSIONCODE$-$BUILDTYPE$.apk
+```
 
+```
 // good
-appcom-swipe-production-0.0.2.127.apk
-appcom-swipe-develop-0.0.2.20.apk
+appcom-swipe-production-0.0.2.127-debug.apk
+appcom-swipe-develop-0.0.2.20-release.apk
 
 // bad
 appcom-swipe.apk
 swipe-0.0.1.apk
 ```
+You can use our [Android Versioning Plugin](https://github.com/appcom-interactive/android-versioning) for Gradle to add 
+the specified version name to the output apk automatically.
 
 **[back to top](#table-of-contents)**
 
