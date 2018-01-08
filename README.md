@@ -648,6 +648,10 @@ The `WHERE`describes in which part of the app the string is used. If
 it is used in more than one screen use `all`. The `DESCRIPTION` should
 tell the reader what the actual purpose of the string is.
 
+When developing a cross platform app, we recommend using the [twine](https://github.com/scelis/twine) tool for easy 
+multi platform string resource synchronization. To make it even easier, just use 
+our [Android Twine Plugin](https://github.com/appcom-interactive/android-twine).
+
 <a name="naming--dimens"></a><a name="11.4"></a>
 - [11.4](#naming--dimens) Dimensions should be named after the
 following pattern:
