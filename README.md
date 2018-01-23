@@ -173,7 +173,7 @@ package structure for the app structure is described in the following
 table:
 
 | Package | Description |
-|:-|:-|
+|:-|:-------------------|
 | activities | Contains all the activities used in the project. |
 | adapters | Contains all the adapters of any kind used in the project. |
 | annotations | Contains the annotations used in the project. |
