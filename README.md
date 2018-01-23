@@ -26,7 +26,7 @@ in any way you want.
 1. [Live templates](#live-templates)
 1. [Roadmap](#roadmap)
 1. [Resources](#resources)
-1. [Related work](#relatedwork)
+1. [Related work](#related-work)
 1. [License](#license)
 
 ## Gradle 
