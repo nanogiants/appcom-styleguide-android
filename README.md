@@ -1053,7 +1053,7 @@ in future releases without a fixed date.
 ## Related work
 
 * [Versioning](https://github.com/appcom-interactive/android-versioning) a gradle plugin to enforce artifact naming specified in this document
-* [Localisation](https://github.com/appcom-interactive/android-twine() a gradle plugin to provide scripts to use twine 
+* [Localisation](https://github.com/appcom-interactive/android-twine) a gradle plugin to provide scripts to use twine 
 
 ## License 
 
