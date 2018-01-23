@@ -26,6 +26,7 @@ in any way you want.
 1. [Live templates](#live-templates)
 1. [Roadmap](#roadmap)
 1. [Resources](#resources)
+1. [Related work](#relatedwork)
 1. [License](#license)
 
 ## Gradle 
@@ -1048,6 +1049,11 @@ in future releases without a fixed date.
 ### Logging 
 
 * [http://www.masterzen.fr/2013/01/13/the-10-commandments-of-logging/](http://www.masterzen.fr/2013/01/13/the-10-commandments-of-logging/)
+
+## Related work
+
+* [Versioning](https://github.com/appcom-interactive/android-versioning) a gradle plugin to enforce artifact naming specified in this document
+* [Localisation](https://github.com/appcom-interactive/android-twine() a gradle plugin to provide scripts to use twine 
 
 ## License 
 
