@@ -1062,6 +1062,7 @@ in future releases without a fixed date.
 
 * [Versioning](https://github.com/appcom-interactive/android-versioning) a gradle plugin to enforce artifact naming specified in this document
 * [Localisation](https://github.com/appcom-interactive/android-twine) a gradle plugin to provide scripts to use twine 
+* [Installing appcom livetemplates](https://github.com/appcom-interactive/android-livetemplates)
 
 ## License 
 
