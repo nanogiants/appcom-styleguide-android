@@ -222,6 +222,63 @@ java classes. The style along with install instructions can be found
 <a name="style--line-length"></a><a name="6.2"></a>
 - [6.2](#style--line-length) Use a line length of 120 characters.
 
+<a name="style--general"></a><a name="6.3"></a>
+- [6.3](#stye--general) Some aspects of code style are not obivous. Therefore we are listing them here explicitly
+* Remove any blanklines from the beginning and ending of a block
+
+```
+// bad 
+public class Foo {
+
+  public void bar() {
+  
+    // ...
+    for(int i = 0; i < 10; i ++) {
+      // ...
+    }
+    
+    
+  }
+  
+}
+
+// good
+public class Foo {
+  public void bar() {
+    for(int i = 0; i < 10; i ++) {
+      // ...
+    }
+  }
+}
+```
+
+* When defining interfaces add a blank line between method definitions. And be consistent!
+  
+```
+  // bad
+  public interface Foo {
+    void bar1();
+    void bar2();
+  }
+  
+  // bad
+  public interface Foo {
+    void bar1();
+    void bar2();
+    
+    void bar3();
+  }
+  
+  // good 
+  public interface Foo {
+    void bar1();
+    
+    void bar2();
+    
+    void bar3();
+  }
+```
+
 **[back to top](#table-of-contents)**
 
 ## Comments
