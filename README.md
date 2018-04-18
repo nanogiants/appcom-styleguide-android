@@ -224,7 +224,8 @@ java classes. The style along with install instructions can be found
 
 <a name="style--general"></a><a name="6.3"></a>
 - [6.3](#stye--general) Some aspects of code style are not obivous. Therefore we are listing them here explicitly
-* Remove any blanklines from the beginning and ending of a block
+* Remove any blanklines from the beginning and ending of a block. Exceptions:
+  * When defining class members leave a blank line between class header and first class member. Leave also a blank line between the definition of the last class member and the rest.
 
 ```
 // bad 
@@ -244,6 +245,18 @@ public class Foo {
 
 // good
 public class Foo {
+  public void bar() {
+    for(int i = 0; i < 10; i ++) {
+      // ...
+    }
+  }
+}
+
+// good, since this is an exception
+public class Foo {
+
+  private int member;
+  
   public void bar() {
     for(int i = 0; i < 10; i ++) {
       // ...
