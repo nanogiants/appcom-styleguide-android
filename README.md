@@ -219,8 +219,8 @@ transformers package), except for the `di` package.
 
 <a name="style--preferred-stlye"></a><a name="6.1"></a>
 - [6.1](#style--preferred-stlye) Use the square android style for all
-java classes. The style along with install instructions can be found
-[here](https://github.com/square/java-code-styles).
+java classes. XML formatting for layouts is already included and should always been applied. The style along with install instructions can be found
+[here](https://github.com/square/java-code-styles). 
 
 <a name="style--line-length"></a><a name="6.2"></a>
 - [6.2](#style--line-length) Use a line length of 120 characters.
