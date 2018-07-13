@@ -413,9 +413,8 @@ public class Calculator extends Abacus {
 
 <a name="strings--format"></a><a name="8.1"></a>
 - [8.1](#strings--format) Use the `StringBuilder` to concatenate
-strings. Why: It is much faster than `String.format` and the
-`+`-Operator on Strings. Also most of the time the java compiler
-will convert String concatenation to `StringBuilder` calls.
+  strings in performance critical situations and in loops. Why: It is much faster than `String.format` and the `+`-Operator on Strings. Also most of the time the java compiler
+  will convert String concatenation to `StringBuilder` calls. 
 
 ```
 int value = 20;
@@ -500,11 +499,48 @@ private int value;
 
 <a name="classes-constructors--tostring"></a><a name="9.2"></a>
 - [9.2](#classes-constructors--tostring) Add always a toString method
-for entities and models. Why: You almost always have the need to log
-the current state of a pojo. And that is when you release you get
-something like this `[Lcom.foo.Object;@28a418fc`. So keep yourself
-from this and create a `toString`-Method. Also todays IDEs can create
-it automatically.
+  for entities and models. Why: You almost always have the need to log
+  the current state of a pojo. And that is when you release you get
+  something like this `[Lcom.foo.Object;@28a418fc`. So keep yourself
+  from this and create a `toString`-Method. Also todays IDEs can create
+  it automatically.
+
+<a name="classes-constructors--order"></a><a name="9.3"></a>
+- [9.3](#classes-constructors--order) Arrange methods, variables, constructors,
+  interfaces etc. in the following consistent order. Why: It supports your team 
+  members to understand your source code faster.
+1. static variables
+2. butterknife view bindings
+3. butterknife resource bindings
+4. butterknife listener bindings
+5. dependency injection
+6. instance variables
+7. constructors
+8. instance methods
+9. interfaces/ callbacks
+
+```
+// good
+public Klass() {
+	public static final DURATION_IN_MILLIS = 1000L;
+	
+	@BindView(R.id.login_password_textview) TextView loginPasswordTextview;
+	
+	@BindString(R.string.login_title) String loginTitleString;
+	
+	@OnClick(R.id.login_button_submit) onLoginButtonSubmitClicked() { ... }
+	
+	@Inject LoginController loginController;
+	
+	private boolean userIsLoggedIn;
+	
+	Klass() { ... }
+	
+	private void init() { ... }
+	
+	interface OnLoginClickListener { ... }
+}
+```
 
 **[back to top](#table-of-contents)**
 
@@ -676,8 +712,8 @@ named after the following pattern:
 
 ```
 // example
-login_background
-login_button_small
+bg_login_textview
+ic_startactivity_button_small
 ```
 
 The `WHAT` denodes the type of the drawable. It can be one of the
@@ -757,7 +793,7 @@ term (e.g. small).
 
 <a name="naming--integers"></a><a name="11.5"></a>
 - [11.5](#naming--integers) Integers should be named after the following
-pattern:
+  pattern:
 
 ```
 <WHERE>_<DESCRIPTION>
@@ -772,6 +808,55 @@ login_number_of_successful_tries
 The `WHERE`describes in which part of the app the integer is used. If
 it is used in more than one screen use `all`. The `DESCRIPTION` should
 tell the reader what the actual purpose of the integer is.
+
+<a name="naming--colors"></a><a name="11.6"></a>
+- [11.6](#naming--colors) Colors should be named after the following rules: 
+
+Do not use prefixes such as dark, light, bright. You cannot ensure that you  never need e.g. an even darker blue than your current darkblue in future. Do not name a color based on its purpose. We often think of a color when we need it and not where it is used. This makes it hard to find the correct one and leads to opening the colors.xml file and hence waste time. When there is suddenly a new purpose, which was not foreseen you probably have to rename the color. 
+
+Instead create a distinct color palette and use the Android Studio plugin [Name That Color](https://plugins.jetbrains.com/plugin/10422-name-that-color) to call the color by its actual name. When you have a hexadecimal color in you clipboard you can use auto-complete (control + space) in the color.xml file to insert directly the complete `<color>` tag with correct naming.
+
+```
+// good
+<color name="apricot">#f0a081</color>
+<color name="violet_red">#FF4081</color>
+<color name="governor_bay">#3F51B5</color>
+
+// bad
+<color name="all_toolbar">#59177e</color>
+<color name="all_button_fab">#59177e</color>
+<color name="dark_blue">#f0a081</color>
+<color name="light_gray">#aaaabb</color>
+```
+
+<a name="naming--styles"></a><a name="11.7"></a>
+- [11.7](#naming--styles) Use styles to describe the appearence of a view, which is used multiple times in the app. Write style names in UpperCamelCase. Do only describe view specific information, do not include information such as margin, which describe its specific environment or positioning. Inherit styles from another, start generic and become more specific. Why? Styles allow you to separate the design from its structure and layout. You only have to set style attributes in one place which makes it easy to apply changes or reuse the appearance of a view without copying code. 
+
+```
+<Category>.<SubCategory> ...
+```
+
+```
+// good
+<style name="RectSolid" parent="Widget.AppCompat.Button">
+    <item name="android:textColor">@color/green_grass</item>
+</style>
+<style name="RectSolid.Primary">
+    <item name="android:textAllCaps">true</item>
+    <item name="android:textStyle">bold</item>
+</style>
+
+// bad
+<style name="RectSolid" parent="Widget.AppCompat.Button">
+    <item name="android:textColor">@color/green_grass</item>
+</style>
+<style name="RectSolidPrimary" parent="Widget.AppCompat.Button">
+	<item name="android:textColor">@color/green_grass</item>
+    <item name="android:textAllCaps">true</item>
+    <item name="android:textStyle">bold</item>
+</style>
+
+```
 
 
 **[back to top](#table-of-contents)**
