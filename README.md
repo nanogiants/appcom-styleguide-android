@@ -517,12 +517,16 @@ private int value;
 6. instance variables
 7. constructors
 8. instance methods
-9. interfaces/ callbacks
+    1. android lifecycle (onCreate, onResume, ...)
+    2. initialization and setup
+    3. inherited
+    4. rest
+9.  interfaces/ callbacks
 
 ```
 // good
-public Klass() {
-	public static final DURATION_IN_MILLIS = 1000L;
+public class Klass() {
+	public static final long DURATION_IN_MILLIS = 1000L;
 	
 	@BindView(R.id.login_password_textview) TextView loginPasswordTextview;
 	
@@ -858,6 +862,15 @@ Instead create a distinct color palette and use the Android Studio plugin [Name 
 
 ```
 
+<a name="naming--themes"></a><a name="11.8"></a>
+- [11.8](#naming--themes) Use themes to describe the appearance of your entire app, an activity or a view hierarchy. Themes make it easy to apply changes globally and in addition allow to configure non-view elements such as status-bar, textPrimaryColor or windowEnterTransition. Always inherit your app theme from the android support library (Theme.AppCompat. …) to ensure backwards compatibility with android 4.0. When you inherit from android themes, do this explicitly with the `parent` attribute. Apart from that, the rules for styles equally apply to themes.
+
+```
+// good
+<style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+	<item name="android:colorPrimary">@color/green_grass</item>
+</style>
+```
 
 **[back to top](#table-of-contents)**
 
@@ -1181,7 +1194,7 @@ in future releases without a fixed date.
 
 ### Next 
 
-* Naming conventions for <strike>strings, dimens, integers</strike>, styles, themes
+* Naming conventions for <strike>strings, dimens, integers, styles, themes</strike>
 * Conventions for View Injection using Butterknife
 * <strike>Conventions for Logging</strike>
 * <strike>Naming conventions for Listener-Interfaces and corresponding methods</strike>
