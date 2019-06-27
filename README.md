@@ -9,7 +9,7 @@ brought to proof in many commercial products for well known clients. It is based
 So use it in your favor if you want to and/or override the style guide
 in any way you want.
 
-## Tables of Contents
+## Table of Contents
 
 1. [Gradle](#gradle)
 1. [Artifacts](#artifacts)
